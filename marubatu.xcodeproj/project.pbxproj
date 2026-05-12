@@ -6,11 +6,54 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		A547B47E2FB36EF300E5FFDA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A547B4522FB36EF300E5FFDA /* Assets.xcassets */; };
+		A547B4842FB36EF300E5FFDA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A547B46A2FB36EF300E5FFDA /* ContentView.swift */; };
+		A547B48C2FB36EF300E5FFDA /* MARUBATU.swift in Sources */ = {isa = PBXBuildFile; fileRef = A547B46C2FB36EF300E5FFDA /* MARUBATU.swift */; };
+		A547B4972FB36EF300E5FFDA /* DesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A547B46B2FB36EF300E5FFDA /* DesignSystem.swift */; };
+		A547B4982FB36EF300E5FFDA /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A547B47B2FB36EF300E5FFDA /* TitleView.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
-		A59FE78B2FB3554000F9A400 /* marubatu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = marubatu.app; path = "/Users/fumiaki/Desktop/marubatu/build/Debug-iphoneos/marubatu.app"; sourceTree = "<absolute>"; };
+		A547B3DF2FB36D5F00E5FFDA /* marubatu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = marubatu.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A547B4522FB36EF300E5FFDA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A547B46A2FB36EF300E5FFDA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A547B46B2FB36EF300E5FFDA /* DesignSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignSystem.swift; sourceTree = "<group>"; };
+		A547B46C2FB36EF300E5FFDA /* MARUBATU.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MARUBATU.swift; sourceTree = "<group>"; };
+		A547B47B2FB36EF300E5FFDA /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		A547B4692FB36EF300E5FFDA /* Components */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Components;
+			sourceTree = "<group>";
+		};
+		A547B46E2FB36EF300E5FFDA /* Models */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A547B4702FB36EF300E5FFDA /* Navigation */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		A547B4722FB36EF300E5FFDA /* Resources */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		A547B47A2FB36EF300E5FFDA /* Screens */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		A547B47D2FB36EF300E5FFDA /* Utils */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		A59FE7AF2FB3562000F9A400 /* Components */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = Components;
@@ -47,10 +90,22 @@
 		A59FE7822FB3554000F9A400 = {
 			isa = PBXGroup;
 			children = (
+				A547B4522FB36EF300E5FFDA /* Assets.xcassets */,
+				A547B4692FB36EF300E5FFDA /* Components */,
+				A547B46A2FB36EF300E5FFDA /* ContentView.swift */,
+				A547B46B2FB36EF300E5FFDA /* DesignSystem.swift */,
+				A547B46C2FB36EF300E5FFDA /* MARUBATU.swift */,
+				A547B46E2FB36EF300E5FFDA /* Models */,
+				A547B4702FB36EF300E5FFDA /* Navigation */,
+				A547B4722FB36EF300E5FFDA /* Resources */,
+				A547B47A2FB36EF300E5FFDA /* Screens */,
+				A547B47B2FB36EF300E5FFDA /* TitleView.swift */,
+				A547B47D2FB36EF300E5FFDA /* Utils */,
 				A59FE7AF2FB3562000F9A400 /* Components */,
 				A59FE7B12FB3562000F9A400 /* Models */,
 				A59FE7B32FB3562000F9A400 /* Navigation */,
 				A59FE7BB2FB3562000F9A400 /* Screens */,
+				A547B3DF2FB36D5F00E5FFDA /* marubatu.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -70,6 +125,12 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
+				A547B4692FB36EF300E5FFDA /* Components */,
+				A547B46E2FB36EF300E5FFDA /* Models */,
+				A547B4702FB36EF300E5FFDA /* Navigation */,
+				A547B4722FB36EF300E5FFDA /* Resources */,
+				A547B47A2FB36EF300E5FFDA /* Screens */,
+				A547B47D2FB36EF300E5FFDA /* Utils */,
 				A59FE7AF2FB3562000F9A400 /* Components */,
 				A59FE7B12FB3562000F9A400 /* Models */,
 				A59FE7B32FB3562000F9A400 /* Navigation */,
@@ -79,7 +140,7 @@
 			packageProductDependencies = (
 			);
 			productName = marubatu;
-			productReference = A59FE78B2FB3554000F9A400 /* marubatu.app */;
+			productReference = A547B3DF2FB36D5F00E5FFDA /* marubatu.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -121,6 +182,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A547B47E2FB36EF300E5FFDA /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,6 +193,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A547B4842FB36EF300E5FFDA /* ContentView.swift in Sources */,
+				A547B48C2FB36EF300E5FFDA /* MARUBATU.swift in Sources */,
+				A547B4972FB36EF300E5FFDA /* DesignSystem.swift in Sources */,
+				A547B4982FB36EF300E5FFDA /* TitleView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
