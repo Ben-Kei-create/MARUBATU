@@ -13,6 +13,7 @@ enum NavigationDestination: Hashable {
     case skillTargetSelection(skill: String)
     case result(won: Bool, score: Int, bonus: Int)
     case stats
+    case settings
 
     func hash(into hasher: inout Hasher) {
         switch self {
@@ -35,27 +36,23 @@ enum NavigationDestination: Hashable {
             hasher.combine(bonus)
         case .stats:
             hasher.combine("stats")
+        case .settings:
+            hasher.combine("settings")
         }
     }
 
     static func == (lhs: NavigationDestination, rhs: NavigationDestination) -> Bool {
         switch (lhs, rhs) {
-        case (.modeSelection, .modeSelection):
-            return true
-        case (.howToPlay, .howToPlay):
-            return true
-        case (.gameplay(let lhsMode), .gameplay(let rhsMode)):
-            return lhsMode == rhsMode
-        case (.skillSelection, .skillSelection):
-            return true
-        case (.skillTargetSelection(let lhsSkill), .skillTargetSelection(let rhsSkill)):
-            return lhsSkill == rhsSkill
-        case (.result(let lhsWon, let lhsScore, let lhsBonus), .result(let rhsWon, let rhsScore, let rhsBonus)):
-            return lhsWon == rhsWon && lhsScore == rhsScore && lhsBonus == rhsBonus
-        case (.stats, .stats):
-            return true
-        default:
-            return false
+        case (.modeSelection, .modeSelection): return true
+        case (.howToPlay, .howToPlay): return true
+        case (.gameplay(let lhsMode), .gameplay(let rhsMode)): return lhsMode == rhsMode
+        case (.skillSelection, .skillSelection): return true
+        case (.skillTargetSelection(let l), .skillTargetSelection(let r)): return l == r
+        case (.result(let lw, let ls, let lb), .result(let rw, let rs, let rb)):
+            return lw == rw && ls == rs && lb == rb
+        case (.stats, .stats): return true
+        case (.settings, .settings): return true
+        default: return false
         }
     }
 }

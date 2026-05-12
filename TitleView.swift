@@ -12,7 +12,7 @@ struct TitleView: View {
                     Spacer()
                     IconButton(
                         iconName: "gearshape.fill",
-                        action: {}
+                        action: { navigationPath.append(.settings) }
                     )
                     .padding(.trailing, DesignSystem.spacing.lg)
                     .padding(.top, DesignSystem.spacing.lg)
