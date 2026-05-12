@@ -25,6 +25,7 @@ struct ContentView: View {
                     }
                 }
         }
+        .background(DesignSystem.colors.darkBg.ignoresSafeArea())
     }
 }
 
