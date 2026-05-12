@@ -19,7 +19,8 @@ struct GlassPanel<Content: View>: View {
             .background(
                 RoundedRectangle(cornerRadius: 14)
                     .fill(DesignSystem.colors.glass)
-                    .backdrop(cornerRadius: 14)
+                    .background(.ultraThinMaterial)
+                    .cornerRadius(14)
             )
             .overlay(
                 RoundedRectangle(cornerRadius: 14)

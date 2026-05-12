@@ -58,7 +58,8 @@ struct EnergyBar: View {
         .background(
             RoundedRectangle(cornerRadius: 14)
                 .fill(DesignSystem.colors.glass)
-                .backdrop()
+                .background(.ultraThinMaterial)
+                .cornerRadius(14)
         )
 
         VStack(alignment: .leading, spacing: 8) {
@@ -80,7 +81,8 @@ struct EnergyBar: View {
         .background(
             RoundedRectangle(cornerRadius: 14)
                 .fill(DesignSystem.colors.glass)
-                .backdrop()
+                .background(.ultraThinMaterial)
+                .cornerRadius(14)
         )
     }
     .padding(DesignSystem.spacing.lg)

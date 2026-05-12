@@ -17,7 +17,7 @@ struct IconButton: View {
                 .background(
                     Circle()
                         .fill(backgroundColor)
-                        .backdrop(cornerRadius: 22)
+                        .background(.ultraThinMaterial)
                 )
                 .overlay(
                     Circle()

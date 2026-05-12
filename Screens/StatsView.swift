@@ -19,7 +19,7 @@ struct StatsView: View {
                     Spacer()
 
                     Text("Stats")
-                        .font(.system(size: 18, weight: .semibold))
+                        .font(.system(size: 16, weight: .semibold))
                         .foregroundColor(DesignSystem.colors.textPrimary)
                         .tracking(0.5)
 
@@ -48,7 +48,8 @@ struct StatsView: View {
                                     selectedTab == tab
                                         ? RoundedRectangle(cornerRadius: 8)
                                             .fill(DesignSystem.colors.glass)
-                                            .backdrop(cornerRadius: 8)
+                                            .background(.ultraThinMaterial)
+                                            .cornerRadius(8)
                                         : nil
                                 )
                         }
@@ -100,7 +101,8 @@ struct StatsView: View {
                             .background(
                                 RoundedRectangle(cornerRadius: 12)
                                     .fill(DesignSystem.colors.glass)
-                                    .backdrop(cornerRadius: 12)
+                                    .background(.ultraThinMaterial)
+                                    .cornerRadius(12)
                             )
 
                             HStack {
@@ -116,7 +118,8 @@ struct StatsView: View {
                             .background(
                                 RoundedRectangle(cornerRadius: 12)
                                     .fill(DesignSystem.colors.glass)
-                                    .backdrop(cornerRadius: 12)
+                                    .background(.ultraThinMaterial)
+                                    .cornerRadius(12)
                             )
 
                             HStack {
@@ -132,7 +135,8 @@ struct StatsView: View {
                             .background(
                                 RoundedRectangle(cornerRadius: 12)
                                     .fill(DesignSystem.colors.glass)
-                                    .backdrop(cornerRadius: 12)
+                                    .background(.ultraThinMaterial)
+                                    .cornerRadius(12)
                             )
 
                             HStack {
@@ -148,7 +152,8 @@ struct StatsView: View {
                             .background(
                                 RoundedRectangle(cornerRadius: 12)
                                     .fill(DesignSystem.colors.glass)
-                                    .backdrop(cornerRadius: 12)
+                                    .background(.ultraThinMaterial)
+                                    .cornerRadius(12)
                             )
                         }
                     }

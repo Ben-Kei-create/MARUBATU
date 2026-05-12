@@ -24,7 +24,7 @@ struct GameCell: View {
                     .background(
                         Circle()
                             .fill(DesignSystem.colors.glass)
-                            .backdrop(cornerRadius: 40)
+                            .background(.ultraThinMaterial)
                     )
                     .frame(width: 72, height: 72)
 

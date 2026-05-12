@@ -67,10 +67,11 @@ struct SkillSelectionView: View {
                 .padding(DesignSystem.spacing.lg)
 
                 Text("Select a Skill")
-                    .font(.system(size: 18, weight: .semibold))
+                    .font(.system(size: 16, weight: .semibold))
                     .foregroundColor(DesignSystem.colors.textPrimary)
                     .tracking(0.3)
-                    .padding(DesignSystem.spacing.lg)
+                    .padding(.horizontal, DesignSystem.spacing.lg)
+                    .padding(.vertical, DesignSystem.spacing.md)
 
                 ScrollView(.vertical, showsIndicators: false) {
                     VStack(spacing: DesignSystem.spacing.md) {
@@ -105,7 +106,8 @@ struct SkillSelectionView: View {
                                 .background(
                                     RoundedRectangle(cornerRadius: 12)
                                         .fill(DesignSystem.colors.glass)
-                                        .backdrop(cornerRadius: 12)
+                                        .background(.ultraThinMaterial)
+                                    .cornerRadius(12)
                                 )
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 12)

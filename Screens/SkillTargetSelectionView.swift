@@ -20,23 +20,24 @@ struct SkillTargetSelectionView: View {
                 }
                 .padding(DesignSystem.spacing.lg)
 
-                VStack(alignment: .leading, spacing: 8) {
+                VStack(alignment: .leading, spacing: 6) {
                     Text("Skill: \(skillName)")
-                        .font(.system(size: 16, weight: .semibold))
+                        .font(.system(size: 14, weight: .semibold))
                         .foregroundColor(DesignSystem.colors.textPrimary)
                         .tracking(0.3)
 
-                    HStack(spacing: 6) {
+                    HStack(spacing: 4) {
                         Image(systemName: "bolt.fill")
-                            .font(.system(size: 12, weight: .light))
+                            .font(.system(size: 11, weight: .light))
                             .foregroundColor(DesignSystem.colors.accentBlue)
 
                         Text("3")
-                            .font(.system(size: 14, weight: .medium))
+                            .font(.system(size: 12, weight: .medium))
                             .foregroundColor(DesignSystem.colors.textPrimary)
                     }
                 }
-                .padding(DesignSystem.spacing.lg)
+                .padding(.horizontal, DesignSystem.spacing.lg)
+                .padding(.vertical, DesignSystem.spacing.md)
 
                 Text("Select a target line")
                     .font(.system(size: 14, weight: .light))
