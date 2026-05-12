@@ -22,13 +22,13 @@ struct TitleView: View {
                     .frame(minHeight: 80)
 
                 VStack(spacing: DesignSystem.spacing.md) {
-                    Text("NEXUS")
+                    Text(L.appTitle)
                         .font(DesignSystem.typography.titleFont)
                         .tracking(2.5)
                         .foregroundColor(DesignSystem.colors.textPrimary)
                         .shadow(color: DesignSystem.colors.accentBlue.opacity(0.6), radius: 20)
 
-                    Text("A new 4x5 strategy game")
+                    Text(L.appSubtitle)
                         .font(DesignSystem.typography.subtitleFont)
                         .tracking(0.8)
                         .foregroundColor(DesignSystem.colors.textSecondary)
@@ -39,12 +39,12 @@ struct TitleView: View {
 
                 VStack(spacing: DesignSystem.spacing.lg) {
                     GradientButton(
-                        label: "Play",
+                        label: L.play,
                         action: { navigationPath.append(.modeSelection) }
                     )
 
                     GlassButton(
-                        label: "How to Play",
+                        label: L.howToPlay,
                         action: { navigationPath.append(.howToPlay) }
                     )
                 }

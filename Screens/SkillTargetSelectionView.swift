@@ -179,7 +179,7 @@ struct SkillTargetSelectionView: View {
                     .padding(DesignSystem.spacing.lg)
                 } else {
                     GlassButton(
-                        label: "Cancel",
+                        label: L.back,
                         action: { navigationPath.removeLast() }
                     )
                     .padding(DesignSystem.spacing.lg)

@@ -18,7 +18,7 @@ struct StatsView: View {
 
                     Spacer()
 
-                    Text("Stats")
+                    Text(L.stats)
                         .font(.system(size: 16, weight: .semibold))
                         .foregroundColor(DesignSystem.colors.textPrimary)
                         .tracking(0.5)
@@ -77,7 +77,7 @@ struct StatsView: View {
                                 .shadow(color: DesignSystem.colors.accentBlue.opacity(0.4), radius: 12)
 
                             VStack(spacing: 4) {
-                                Text("Win Rate")
+                                Text(L.winRate)
                                     .font(.system(size: 12, weight: .light))
                                     .foregroundColor(DesignSystem.colors.textSecondary)
 
@@ -89,7 +89,7 @@ struct StatsView: View {
 
                         VStack(spacing: DesignSystem.spacing.md) {
                             HStack {
-                                Text("Total Plays")
+                                Text(L.totalPlays)
                                     .font(.system(size: 14, weight: .light))
                                     .foregroundColor(DesignSystem.colors.textSecondary)
                                 Spacer()
@@ -106,7 +106,7 @@ struct StatsView: View {
                             )
 
                             HStack {
-                                Text("Wins")
+                                Text(L.wins)
                                     .font(.system(size: 14, weight: .light))
                                     .foregroundColor(DesignSystem.colors.textSecondary)
                                 Spacer()
@@ -123,7 +123,7 @@ struct StatsView: View {
                             )
 
                             HStack {
-                                Text("Best Score")
+                                Text(L.bestScore)
                                     .font(.system(size: 14, weight: .light))
                                     .foregroundColor(DesignSystem.colors.textSecondary)
                                 Spacer()
@@ -140,7 +140,7 @@ struct StatsView: View {
                             )
 
                             HStack {
-                                Text("Win Streak")
+                                Text(L.winStreak)
                                     .font(.system(size: 14, weight: .light))
                                     .foregroundColor(DesignSystem.colors.textSecondary)
                                 Spacer()

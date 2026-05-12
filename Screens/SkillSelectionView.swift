@@ -66,7 +66,7 @@ struct SkillSelectionView: View {
                 }
                 .padding(DesignSystem.spacing.lg)
 
-                Text("Select a Skill")
+                Text(L.selectSkill)
                     .font(.system(size: 16, weight: .semibold))
                     .foregroundColor(DesignSystem.colors.textPrimary)
                     .tracking(0.3)
@@ -124,7 +124,7 @@ struct SkillSelectionView: View {
                 }
 
                 GlassButton(
-                    label: "Cancel",
+                    label: L.back,
                     action: { navigationPath.removeLast() }
                 )
                 .padding(DesignSystem.spacing.lg)

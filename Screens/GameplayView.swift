@@ -23,7 +23,7 @@ struct GameplayView: View {
                     Spacer()
 
                     VStack(spacing: 2) {
-                        Text("YOUR TURN")
+                        Text(L.yourTurn)
                             .font(.system(size: 11, weight: .light))
                             .foregroundColor(DesignSystem.colors.textSecondary)
                             .tracking(0.5)
@@ -62,7 +62,7 @@ struct GameplayView: View {
                                     .font(.system(size: 13, weight: .light))
                                     .foregroundColor(DesignSystem.colors.accentBlue)
 
-                                Text("ENERGY")
+                                Text(L.energy)
                                     .font(.system(size: 11, weight: .light))
                                     .foregroundColor(DesignSystem.colors.textSecondary)
                                     .tracking(0.5)
@@ -72,7 +72,7 @@ struct GameplayView: View {
 
                             EnergyBar(current: currentEnergy, max: maxEnergy)
 
-                            GradientButton(label: "Skill", action: {
+                            GradientButton(label: L.skill, action: {
                                 navigationPath.append(.skillSelection)
                             })
                             .frame(height: 42)
