@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		A59FE78B2FB3554000F9A400 /* marubatu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = marubatu.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A59FE78B2FB3554000F9A400 /* marubatu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = marubatu.app; path = "/Users/fumiaki/Desktop/marubatu/build/Debug-iphoneos/marubatu.app"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -51,16 +51,7 @@
 				A59FE7B12FB3562000F9A400 /* Models */,
 				A59FE7B32FB3562000F9A400 /* Navigation */,
 				A59FE7BB2FB3562000F9A400 /* Screens */,
-				A59FE78C2FB3554000F9A400 /* Products */,
 			);
-			sourceTree = "<group>";
-		};
-		A59FE78C2FB3554000F9A400 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				A59FE78B2FB3554000F9A400 /* marubatu.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -116,7 +107,7 @@
 			mainGroup = A59FE7822FB3554000F9A400;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = A59FE78C2FB3554000F9A400 /* Products */;
+			productRefGroup = A59FE7822FB3554000F9A400;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
