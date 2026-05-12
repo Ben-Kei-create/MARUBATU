@@ -2,36 +2,48 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var navigationPath: [NavigationDestination] = []
+    @State private var showSplash = true
     @ObservedObject private var adManager = AdManager.shared
 
     var body: some View {
-        NavigationStack(path: $navigationPath) {
-            TitleView(navigationPath: $navigationPath)
-                .navigationDestination(for: NavigationDestination.self) { destination in
-                    switch destination {
-                    case .modeSelection:
-                        ModeSelectionView(navigationPath: $navigationPath)
-                    case .howToPlay:
-                        HowToPlayView(navigationPath: $navigationPath)
-                    case .gameplay(let mode):
-                        GameplayView(navigationPath: $navigationPath, mode: mode)
-                    case .skillSelection:
-                        SkillSelectionView(navigationPath: $navigationPath)
-                    case .skillTargetSelection(let skill):
-                        SkillTargetSelectionView(navigationPath: $navigationPath, skillName: skill)
-                    case .result(let won, let score, let bonus):
-                        ResultView(navigationPath: $navigationPath, won: won, score: score, bonus: bonus)
-                    case .stats:
-                        StatsView(navigationPath: $navigationPath)
-                    case .settings:
-                        SettingsView(navigationPath: $navigationPath)
+        ZStack {
+            NavigationStack(path: $navigationPath) {
+                TitleView(navigationPath: $navigationPath)
+                    .navigationDestination(for: NavigationDestination.self) { destination in
+                        switch destination {
+                        case .modeSelection:
+                            ModeSelectionView(navigationPath: $navigationPath)
+                        case .howToPlay:
+                            HowToPlayView(navigationPath: $navigationPath)
+                        case .gameplay(let mode):
+                            GameplayView(navigationPath: $navigationPath, mode: mode)
+                        case .skillSelection:
+                            SkillSelectionView(navigationPath: $navigationPath)
+                        case .skillTargetSelection(let skill):
+                            SkillTargetSelectionView(navigationPath: $navigationPath, skillName: skill)
+                        case .result(let won, let score, let bonus):
+                            ResultView(navigationPath: $navigationPath, won: won, score: score, bonus: bonus)
+                        case .stats:
+                            StatsView(navigationPath: $navigationPath)
+                        case .settings:
+                            SettingsView(navigationPath: $navigationPath)
+                        }
                     }
-                }
+            }
+            .background(DesignSystem.colors.darkBg.ignoresSafeArea())
+            .fullScreenCover(isPresented: $adManager.shouldShowAd) {
+                AdInterstitialView()
+            }
+
+            if showSplash {
+                SplashView(onFinish: {
+                    showSplash = false
+                })
+                .transition(.opacity)
+                .zIndex(10)
+            }
         }
-        .background(DesignSystem.colors.darkBg.ignoresSafeArea())
-        .fullScreenCover(isPresented: $adManager.shouldShowAd) {
-            AdInterstitialView()
-        }
+        .animation(.easeInOut(duration: 0.4), value: showSplash)
     }
 }
 
