@@ -22,14 +22,14 @@ struct GameplayView: View {
 
                     Spacer()
 
-                    VStack(spacing: 2) {
-                        Text(L.yourTurn)
-                            .font(.system(size: 11, weight: .light))
+                    VStack(spacing: 4) {
+                        Text("YOUR TURN")
+                            .font(.system(size: 12, weight: .light))
                             .foregroundColor(DesignSystem.colors.textSecondary)
                             .tracking(0.5)
 
                         Text("●")
-                            .font(.system(size: 6))
+                            .font(.system(size: 8))
                             .foregroundColor(DesignSystem.colors.accentBlue)
                     }
 
@@ -40,53 +40,46 @@ struct GameplayView: View {
                         action: {}
                     )
                 }
-                .padding(.horizontal, DesignSystem.spacing.lg)
-                .padding(.vertical, DesignSystem.spacing.md)
+                .padding(DesignSystem.spacing.lg)
 
-                HStack(spacing: DesignSystem.spacing.md) {
+                HStack(spacing: DesignSystem.spacing.xl) {
                     PlayerScorePanel(isPlayer: true, score: playerScore, isTurn: true)
                     Spacer()
                     PlayerScorePanel(isPlayer: false, score: aiScore, isTurn: false)
                 }
                 .padding(.horizontal, DesignSystem.spacing.lg)
-                .padding(.bottom, DesignSystem.spacing.md)
+                .padding(.vertical, DesignSystem.spacing.md)
 
-                ScrollView(.vertical, showsIndicators: false) {
-                    VStack(spacing: DesignSystem.spacing.lg) {
-                        GameBoard(marks: boardMarks, selectedIndex: nil) { _ in }
-                            .frame(maxHeight: 300)
+                Spacer()
 
-                        VStack(alignment: .leading, spacing: 10) {
-                            HStack {
-                                Image(systemName: "bolt.fill")
-                                    .font(.system(size: 13, weight: .light))
-                                    .foregroundColor(DesignSystem.colors.accentBlue)
+                GameBoard(marks: boardMarks, selectedIndex: nil) { _ in }
 
-                                Text(L.energy)
-                                    .font(.system(size: 11, weight: .light))
-                                    .foregroundColor(DesignSystem.colors.textSecondary)
-                                    .tracking(0.5)
+                Spacer()
 
-                                Spacer()
-                            }
+                VStack(alignment: .leading, spacing: 12) {
+                    HStack {
+                        Image(systemName: "bolt.fill")
+                            .font(.system(size: 14, weight: .light))
+                            .foregroundColor(DesignSystem.colors.accentBlue)
 
-                            EnergyBar(current: currentEnergy, max: maxEnergy)
+                        Text("ENERGY")
+                            .font(.system(size: 12, weight: .light))
+                            .foregroundColor(DesignSystem.colors.textSecondary)
+                            .tracking(0.5)
 
-                            GradientButton(label: L.skill, action: {
-                                navigationPath.append(.skillSelection)
-                            })
-                            .frame(height: 42)
-                        }
-                        .padding(DesignSystem.spacing.lg)
-                        .background(
-                            RoundedRectangle(cornerRadius: 12)
-                                .fill(DesignSystem.colors.glass)
-                                .background(.ultraThinMaterial)
-                                .cornerRadius(12)
-                        )
+                        Spacer()
                     }
-                    .padding(DesignSystem.spacing.lg)
+
+                    EnergyBar(current: currentEnergy, max: maxEnergy)
+
+                    HStack(spacing: 12) {
+                        GradientButton(label: "Skill", action: {
+                            navigationPath.append(.skillSelection)
+                        })
+                        .frame(height: 44)
+                    }
                 }
+                .padding(DesignSystem.spacing.lg)
             }
         }
         .ignoresSafeArea()

@@ -58,32 +58,8 @@ struct EnergyBar: View {
         .background(
             RoundedRectangle(cornerRadius: 14)
                 .fill(DesignSystem.colors.glass)
-                .background(.ultraThinMaterial)
-                .cornerRadius(14)
         )
-
-        VStack(alignment: .leading, spacing: 8) {
-            HStack {
-                Image(systemName: "bolt.fill")
-                    .font(.system(size: 14, weight: .light))
-                    .foregroundColor(DesignSystem.colors.accentBlue)
-
-                Text("ENERGY")
-                    .font(.system(size: 12, weight: .light))
-                    .foregroundColor(DesignSystem.colors.textSecondary)
-                    .tracking(0.5)
-            }
-
-            EnergyBar(current: 10, max: 10)
-        }
-        .padding(DesignSystem.spacing.md)
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .background(
-            RoundedRectangle(cornerRadius: 14)
-                .fill(DesignSystem.colors.glass)
-                .background(.ultraThinMaterial)
-                .cornerRadius(14)
-        )
+        .background(.ultraThinMaterial)
     }
     .padding(DesignSystem.spacing.lg)
     .background(DesignSystem.colors.darkBg)

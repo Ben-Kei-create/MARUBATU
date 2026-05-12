@@ -31,7 +31,7 @@ struct ResultView: View {
                         .frame(width: 300, height: 300)
 
                     VStack(spacing: DesignSystem.spacing.lg) {
-                        Text(won ? L.youWin : L.youLose)
+                        Text(won ? "YOU WIN" : "YOU LOSE")
                             .font(.system(size: 48, weight: .thin))
                             .tracking(2.0)
                             .foregroundColor(
@@ -62,14 +62,14 @@ struct ResultView: View {
 
                 VStack(spacing: DesignSystem.spacing.lg) {
                     GradientButton(
-                        label: L.playAgain,
+                        label: "Play Again",
                         action: {
                             navigationPath.removeLast()
                         }
                     )
 
                     GlassButton(
-                        label: L.backToModeSelect,
+                        label: "Back to Mode Select",
                         action: {
                             navigationPath.removeLast()
                             navigationPath.removeLast()

@@ -39,12 +39,11 @@ struct ModeCard: View {
                 }
             }
             .padding(DesignSystem.spacing.lg)
-            .frame(height: 120)
+            .frame(height: 140)
             .background(
                 RoundedRectangle(cornerRadius: 20)
                     .fill(DesignSystem.colors.glass)
-                    .background(.ultraThinMaterial)
-                    .cornerRadius(20)
+                    
             )
             .overlay(
                 RoundedRectangle(cornerRadius: 20)

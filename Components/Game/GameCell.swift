@@ -24,8 +24,8 @@ struct GameCell: View {
                     .background(
                         Circle()
                             .fill(DesignSystem.colors.glass)
-                            .background(.ultraThinMaterial)
                     )
+                    .background(.ultraThinMaterial)
                     .frame(width: 72, height: 72)
 
                 if isSelected {

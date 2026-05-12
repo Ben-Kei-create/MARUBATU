@@ -16,7 +16,7 @@ struct HowToPlayView: View {
 
                     Spacer()
 
-                    Text(L.howToPlay)
+                    Text("How to Play")
                         .font(.system(size: 18, weight: .semibold))
                         .foregroundColor(DesignSystem.colors.textPrimary)
                         .tracking(0.5)
@@ -54,12 +54,12 @@ struct HowToPlayView: View {
 
                 VStack(spacing: DesignSystem.spacing.lg) {
                     GradientButton(
-                        label: L.gotIt,
+                        label: "Got It",
                         action: { navigationPath.removeLast() }
                     )
 
                     GlassButton(
-                        label: L.back,
+                        label: "Back",
                         action: { navigationPath.removeLast() }
                     )
                 }

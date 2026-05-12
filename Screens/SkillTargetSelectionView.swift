@@ -20,24 +20,23 @@ struct SkillTargetSelectionView: View {
                 }
                 .padding(DesignSystem.spacing.lg)
 
-                VStack(alignment: .leading, spacing: 6) {
+                VStack(alignment: .leading, spacing: 8) {
                     Text("Skill: \(skillName)")
-                        .font(.system(size: 14, weight: .semibold))
+                        .font(.system(size: 16, weight: .semibold))
                         .foregroundColor(DesignSystem.colors.textPrimary)
                         .tracking(0.3)
 
-                    HStack(spacing: 4) {
+                    HStack(spacing: 6) {
                         Image(systemName: "bolt.fill")
-                            .font(.system(size: 11, weight: .light))
+                            .font(.system(size: 12, weight: .light))
                             .foregroundColor(DesignSystem.colors.accentBlue)
 
                         Text("3")
-                            .font(.system(size: 12, weight: .medium))
+                            .font(.system(size: 14, weight: .medium))
                             .foregroundColor(DesignSystem.colors.textPrimary)
                     }
                 }
-                .padding(.horizontal, DesignSystem.spacing.lg)
-                .padding(.vertical, DesignSystem.spacing.md)
+                .padding(DesignSystem.spacing.lg)
 
                 Text("Select a target line")
                     .font(.system(size: 14, weight: .light))
@@ -179,7 +178,7 @@ struct SkillTargetSelectionView: View {
                     .padding(DesignSystem.spacing.lg)
                 } else {
                     GlassButton(
-                        label: L.back,
+                        label: "Cancel",
                         action: { navigationPath.removeLast() }
                     )
                     .padding(DesignSystem.spacing.lg)
