@@ -3,11 +3,17 @@ import SwiftUI
 struct GameplayView: View {
     @Binding var navigationPath: [NavigationDestination]
     let mode: GameMode
-    @State private var boardMarks: [[CellMark]] = Array(repeating: Array(repeating: CellMark.empty, count: 4), count: 5)
-    @State private var playerScore = 7
-    @State private var aiScore = 7
-    @State private var currentEnergy = 6
-    @State private var maxEnergy = 10
+    @StateObject private var vm: GameViewModel
+
+    init(
+        navigationPath: Binding<[NavigationDestination]>,
+        mode: GameMode,
+        viewModel: GameViewModel? = nil
+    ) {
+        _navigationPath = navigationPath
+        self.mode = mode
+        _vm = StateObject(wrappedValue: viewModel ?? GameViewModel(mode: mode))
+    }
 
     var body: some View {
         ZStack {
@@ -23,7 +29,7 @@ struct GameplayView: View {
                     Spacer()
 
                     VStack(spacing: 4) {
-                        Text("YOUR TURN")
+                        Text(vm.turnLabel)
                             .font(.system(size: 12, weight: .light))
                             .foregroundColor(DesignSystem.colors.textSecondary)
                             .tracking(0.5)
@@ -43,16 +49,18 @@ struct GameplayView: View {
                 .padding(DesignSystem.spacing.lg)
 
                 HStack(spacing: DesignSystem.spacing.xl) {
-                    PlayerScorePanel(isPlayer: true, score: playerScore, isTurn: true)
+                    PlayerScorePanel(isPlayer: true, score: vm.playerScore, isTurn: vm.currentPlayer == .x)
                     Spacer()
-                    PlayerScorePanel(isPlayer: false, score: aiScore, isTurn: false)
+                    PlayerScorePanel(isPlayer: false, score: vm.opponentScore, isTurn: vm.currentPlayer == .o)
                 }
                 .padding(.horizontal, DesignSystem.spacing.lg)
                 .padding(.vertical, DesignSystem.spacing.md)
 
                 Spacer()
 
-                GameBoard(marks: boardMarks, selectedIndex: nil) { _ in }
+                GameBoard(marks: vm.board, selectedIndex: nil) { index in
+                    vm.placeMark(at: index)
+                }
 
                 Spacer()
 
@@ -70,10 +78,11 @@ struct GameplayView: View {
                         Spacer()
                     }
 
-                    EnergyBar(current: currentEnergy, max: maxEnergy)
+                    EnergyBar(current: vm.energy, max: 10)
 
                     HStack(spacing: 12) {
                         GradientButton(label: "Skill", action: {
+                            guard !vm.isAITurn else { return }
                             navigationPath.append(.skillSelection)
                         })
                         .frame(height: 44)
@@ -83,6 +92,27 @@ struct GameplayView: View {
             }
         }
         .ignoresSafeArea()
+        .onAppear {
+            if vm.isGameOver {
+                vm.resetGame()
+            }
+        }
+        .onChange(of: vm.isGameOver) { _, isGameOver in
+            guard isGameOver else { return }
+            navigateToResultIfNeeded()
+        }
+    }
+
+    private func navigateToResultIfNeeded() {
+        let result = NavigationDestination.result(
+            won: vm.resultWon,
+            score: vm.resultScore,
+            bonus: vm.totalBonus
+        )
+
+        if navigationPath.last != result {
+            navigationPath.append(result)
+        }
     }
 }
 

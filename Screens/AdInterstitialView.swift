@@ -138,16 +138,14 @@ struct AdInterstitialView: View {
     private func startCountdown() {
         countdown = 5
         canClose = false
-        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
-            Task { @MainActor in
-                if countdown > 1 {
-                    countdown -= 1
-                } else {
-                    countdown = 0
-                    canClose = true
-                    timer.invalidate()
-                }
+
+        Task { @MainActor in
+            for value in stride(from: 4, through: 0, by: -1) {
+                try? await Task.sleep(nanoseconds: 1_000_000_000)
+                countdown = value
             }
+
+            canClose = true
         }
     }
 }

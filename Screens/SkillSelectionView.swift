@@ -17,7 +17,7 @@ let skillsAvailable: [SkillData] = [
 
 struct SkillSelectionView: View {
     @Binding var navigationPath: [NavigationDestination]
-    @State private var currentEnergy = 6
+    @EnvironmentObject private var vm: GameViewModel
 
     var body: some View {
         ZStack {
@@ -31,7 +31,7 @@ struct SkillSelectionView: View {
                         Image(systemName: "bolt.fill")
                             .font(.system(size: 12, weight: .light))
                             .foregroundColor(DesignSystem.colors.accentBlue)
-                        Text("Energy \(currentEnergy) / 10")
+                        Text("Energy \(vm.energy) / 10")
                             .font(.system(size: 13, weight: .light))
                             .foregroundColor(DesignSystem.colors.textSecondary)
                     }
@@ -48,7 +48,7 @@ struct SkillSelectionView: View {
                 ScrollView(.vertical, showsIndicators: false) {
                     VStack(spacing: DesignSystem.spacing.md) {
                         ForEach(skillsAvailable) { skill in
-                            SkillRow(skill: skill, currentEnergy: currentEnergy, navigationPath: $navigationPath)
+                            SkillRow(skill: skill, currentEnergy: vm.energy, navigationPath: $navigationPath)
                         }
                     }
                     .padding(DesignSystem.spacing.lg)
@@ -114,4 +114,5 @@ struct SkillRow: View {
 
 #Preview {
     SkillSelectionView(navigationPath: .constant([]))
+        .environmentObject(GameViewModel(mode: .vsAI))
 }

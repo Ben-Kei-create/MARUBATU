@@ -23,9 +23,25 @@
 		A547B47B2FB36EF300E5FFDA /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		C0D3A1012FB4000000010001 /* Exceptions for "Components" folder in "marubatu" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				ContentView.swift,
+				DesignSystem.swift,
+				MARUBATU.swift,
+				TitleView.swift,
+			);
+			target = A59FE78A2FB3554000F9A400 /* marubatu */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		A547B4692FB36EF300E5FFDA /* Components */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				C0D3A1012FB4000000010001 /* Exceptions for "Components" folder in "marubatu" target */,
+			);
 			path = Components;
 			sourceTree = "<group>";
 		};
@@ -54,24 +70,9 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		A59FE7AF2FB3562000F9A400 /* Components */ = {
+		C0D3A1022FB4000000010001 /* ViewModels */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Components;
-			sourceTree = "<group>";
-		};
-		A59FE7B12FB3562000F9A400 /* Models */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Models;
-			sourceTree = "<group>";
-		};
-		A59FE7B32FB3562000F9A400 /* Navigation */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Navigation;
-			sourceTree = "<group>";
-		};
-		A59FE7BB2FB3562000F9A400 /* Screens */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Screens;
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -101,10 +102,7 @@
 				A547B47A2FB36EF300E5FFDA /* Screens */,
 				A547B47B2FB36EF300E5FFDA /* TitleView.swift */,
 				A547B47D2FB36EF300E5FFDA /* Utils */,
-				A59FE7AF2FB3562000F9A400 /* Components */,
-				A59FE7B12FB3562000F9A400 /* Models */,
-				A59FE7B32FB3562000F9A400 /* Navigation */,
-				A59FE7BB2FB3562000F9A400 /* Screens */,
+				C0D3A1022FB4000000010001 /* ViewModels */,
 				A547B3DF2FB36D5F00E5FFDA /* marubatu.app */,
 			);
 			sourceTree = "<group>";
@@ -131,10 +129,7 @@
 				A547B4722FB36EF300E5FFDA /* Resources */,
 				A547B47A2FB36EF300E5FFDA /* Screens */,
 				A547B47D2FB36EF300E5FFDA /* Utils */,
-				A59FE7AF2FB3562000F9A400 /* Components */,
-				A59FE7B12FB3562000F9A400 /* Models */,
-				A59FE7B32FB3562000F9A400 /* Navigation */,
-				A59FE7BB2FB3562000F9A400 /* Screens */,
+				C0D3A1022FB4000000010001 /* ViewModels */,
 			);
 			name = marubatu;
 			packageProductDependencies = (

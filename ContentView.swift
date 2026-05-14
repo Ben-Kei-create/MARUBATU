@@ -3,6 +3,7 @@ import SwiftUI
 struct ContentView: View {
     @State private var navigationPath: [NavigationDestination] = []
     @State private var showSplash = true
+    @StateObject private var gameSession = GameSessionStore()
     @ObservedObject private var adManager = AdManager.shared
 
     var body: some View {
@@ -10,24 +11,7 @@ struct ContentView: View {
             NavigationStack(path: $navigationPath) {
                 TitleView(navigationPath: $navigationPath)
                     .navigationDestination(for: NavigationDestination.self) { destination in
-                        switch destination {
-                        case .modeSelection:
-                            ModeSelectionView(navigationPath: $navigationPath)
-                        case .howToPlay:
-                            HowToPlayView(navigationPath: $navigationPath)
-                        case .gameplay(let mode):
-                            GameplayView(navigationPath: $navigationPath, mode: mode)
-                        case .skillSelection:
-                            SkillSelectionView(navigationPath: $navigationPath)
-                        case .skillTargetSelection(let skill):
-                            SkillTargetSelectionView(navigationPath: $navigationPath, skillName: skill)
-                        case .result(let won, let score, let bonus):
-                            ResultView(navigationPath: $navigationPath, won: won, score: score, bonus: bonus)
-                        case .stats:
-                            StatsView(navigationPath: $navigationPath)
-                        case .settings:
-                            SettingsView(navigationPath: $navigationPath)
-                        }
+                        destinationView(for: destination)
                     }
             }
             .background(DesignSystem.colors.darkBg.ignoresSafeArea())
@@ -44,6 +28,34 @@ struct ContentView: View {
             }
         }
         .animation(.easeInOut(duration: 0.4), value: showSplash)
+    }
+
+    @ViewBuilder
+    private func destinationView(for destination: NavigationDestination) -> some View {
+        switch destination {
+        case .modeSelection:
+            ModeSelectionView(navigationPath: $navigationPath)
+        case .howToPlay:
+            HowToPlayView(navigationPath: $navigationPath)
+        case .gameplay(let mode):
+            let vm = gameSession.viewModel(for: mode)
+            GameplayView(navigationPath: $navigationPath, mode: mode, viewModel: vm)
+                .environmentObject(vm)
+        case .skillSelection:
+            let vm = gameSession.activeViewModel
+            SkillSelectionView(navigationPath: $navigationPath)
+                .environmentObject(vm)
+        case .skillTargetSelection(let skill):
+            let vm = gameSession.activeViewModel
+            SkillTargetSelectionView(navigationPath: $navigationPath, skillName: skill)
+                .environmentObject(vm)
+        case .result(let won, let score, let bonus):
+            ResultView(navigationPath: $navigationPath, won: won, score: score, bonus: bonus)
+        case .stats:
+            StatsView(navigationPath: $navigationPath)
+        case .settings:
+            SettingsView(navigationPath: $navigationPath)
+        }
     }
 }
 

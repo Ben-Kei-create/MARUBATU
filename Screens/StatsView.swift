@@ -3,6 +3,7 @@ import SwiftUI
 struct StatsView: View {
     @Binding var navigationPath: [NavigationDestination]
     @State private var selectedTab: String = "Total"
+    @StateObject private var stats = StatsViewModel()
     let tabs = ["Total", "VS AI", "2P Mode"]
 
     var body: some View {
@@ -45,17 +46,17 @@ struct StatsView: View {
                                 Text("Win Rate")
                                     .font(.system(size: 12, weight: .light))
                                     .foregroundColor(DesignSystem.colors.textSecondary)
-                                Text("62%")
+                                Text("\(Int((stats.winRate * 100).rounded()))%")
                                     .font(.system(size: 28, weight: .thin))
                                     .foregroundColor(DesignSystem.colors.accentBlue)
                             }
                         }
 
                         VStack(spacing: DesignSystem.spacing.md) {
-                            StatRow(label: "Total Plays", value: "48")
-                            StatRow(label: "Wins", value: "30", valueColor: DesignSystem.colors.accentBlue)
-                            StatRow(label: "Best Score", value: "38")
-                            StatRow(label: "Win Streak", value: "5", valueColor: DesignSystem.colors.accentPurple)
+                            StatRow(label: "Total Plays", value: "\(stats.totalPlays)")
+                            StatRow(label: "Wins", value: "\(stats.totalWins)", valueColor: DesignSystem.colors.accentBlue)
+                            StatRow(label: "Best Score", value: "\(stats.bestScore)")
+                            StatRow(label: "Win Streak", value: "\(stats.winStreak)", valueColor: DesignSystem.colors.accentPurple)
                         }
                     }
                     .padding(DesignSystem.spacing.lg)
@@ -83,6 +84,23 @@ struct StatsView: View {
             }
         }
         .ignoresSafeArea()
+        .onAppear {
+            stats.load(mode: modeForSelectedTab)
+        }
+        .onChange(of: selectedTab) { _, _ in
+            stats.load(mode: modeForSelectedTab)
+        }
+    }
+
+    private var modeForSelectedTab: GameMode? {
+        switch selectedTab {
+        case "VS AI":
+            .vsAI
+        case "2P Mode":
+            .twoPlayer
+        default:
+            nil
+        }
     }
 }
 
