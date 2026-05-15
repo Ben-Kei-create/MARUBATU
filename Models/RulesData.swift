@@ -11,32 +11,32 @@ struct RuleSection: Identifiable {
 let rulesContent: [RuleSection] = [
     RuleSection(
         icon: "square.grid.4x5.fill",
-        title: "4x5 Board",
-        description: "Play on a 4-column, 5-row grid. Place X and O to dominate the board.",
+        title: "4x5ボード",
+        description: "4列x5行の盤面で、XとOを置いてライン完成を狙います。",
         iconColor: DesignSystem.colors.accentBlue
     ),
     RuleSection(
         icon: "line.3.horizontal.decrease",
-        title: "Complete Lines",
-        description: "Create horizontal, vertical, or diagonal lines to score points and gain bonuses.",
+        title: "ライン完成",
+        description: "横・縦・斜めに3つ以上そろえると得点。複数ラインならボーナスが入ります。",
         iconColor: DesignSystem.colors.accentBlue
     ),
     RuleSection(
         icon: "bolt.fill",
-        title: "Energy",
-        description: "Build energy each turn. Use it to activate powerful skills and special abilities.",
+        title: "エネルギー",
+        description: "ターンごとにエネルギーが増えます。ためたエネルギーで強力なスキルを使えます。",
         iconColor: Color(red: 1.0, green: 0.6, blue: 0.2)
     ),
     RuleSection(
         icon: "sparkles",
-        title: "Skills",
-        description: "Break lines, change marks, freeze cells, or reset sections using energy.",
+        title: "スキル",
+        description: "ライン破壊、色変更、エリア凍結、リセットで盤面を大きく動かせます。",
         iconColor: DesignSystem.colors.accentPurple
     ),
     RuleSection(
         icon: "star.fill",
-        title: "Area Effects",
-        description: "Certain cells become special zones with unique effects. Plan strategically.",
+        title: "エリア効果",
+        description: "2x2エリアを狙った効果で、相手の狙いを止めたり形勢を立て直したりできます。",
         iconColor: DesignSystem.colors.accentBlue
     )
 ]

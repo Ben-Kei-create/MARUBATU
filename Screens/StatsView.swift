@@ -2,9 +2,9 @@ import SwiftUI
 
 struct StatsView: View {
     @Binding var navigationPath: [NavigationDestination]
-    @State private var selectedTab: String = "Total"
+    @State private var selectedTab: String = "総合"
     @StateObject private var stats = StatsViewModel()
-    let tabs = ["Total", "VS AI", "2P Mode"]
+    let tabs = ["総合", "AI対戦", "2人プレイ"]
 
     var body: some View {
         ZStack {
@@ -14,7 +14,7 @@ struct StatsView: View {
                 HStack {
                     IconButton(iconName: "chevron.left", action: { navigationPath.removeLast() })
                     Spacer()
-                    Text("Stats")
+                    Text("統計")
                         .font(.system(size: 18, weight: .semibold))
                         .foregroundColor(DesignSystem.colors.textPrimary)
                         .tracking(0.5)
@@ -43,7 +43,7 @@ struct StatsView: View {
                                 .shadow(color: DesignSystem.colors.accentBlue.opacity(0.4), radius: 12)
 
                             VStack(spacing: 4) {
-                                Text("Win Rate")
+                                Text("勝率")
                                     .font(.system(size: 12, weight: .light))
                                     .foregroundColor(DesignSystem.colors.textSecondary)
                                 Text("\(Int((stats.winRate * 100).rounded()))%")
@@ -53,10 +53,10 @@ struct StatsView: View {
                         }
 
                         VStack(spacing: DesignSystem.spacing.md) {
-                            StatRow(label: "Total Plays", value: "\(stats.totalPlays)")
-                            StatRow(label: "Wins", value: "\(stats.totalWins)", valueColor: DesignSystem.colors.accentBlue)
-                            StatRow(label: "Best Score", value: "\(stats.bestScore)")
-                            StatRow(label: "Win Streak", value: "\(stats.winStreak)", valueColor: DesignSystem.colors.accentPurple)
+                            StatRow(label: "合計プレイ数", value: "\(stats.totalPlays)")
+                            StatRow(label: "勝利数", value: "\(stats.totalWins)", valueColor: DesignSystem.colors.accentBlue)
+                            StatRow(label: "最高スコア", value: "\(stats.bestScore)")
+                            StatRow(label: "連勝数", value: "\(stats.winStreak)", valueColor: DesignSystem.colors.accentPurple)
                         }
                     }
                     .padding(DesignSystem.spacing.lg)
@@ -94,9 +94,9 @@ struct StatsView: View {
 
     private var modeForSelectedTab: GameMode? {
         switch selectedTab {
-        case "VS AI":
+        case "AI対戦":
             .vsAI
-        case "2P Mode":
+        case "2人プレイ":
             .twoPlayer
         default:
             nil
@@ -119,9 +119,14 @@ struct TabButton: View {
         }
         .if(isSelected) { view in
             view
-                .background(DesignSystem.colors.glass)
-                .background(.ultraThinMaterial)
-                .cornerRadius(8)
+                .background(
+                    RoundedRectangle(cornerRadius: 8)
+                        .fill(.ultraThinMaterial)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 8)
+                                .fill(DesignSystem.colors.glass)
+                        )
+                )
         }
     }
 }
@@ -142,9 +147,14 @@ struct StatRow: View {
                 .foregroundColor(valueColor)
         }
         .padding(DesignSystem.spacing.md)
-        .background(DesignSystem.colors.glass)
-        .background(.ultraThinMaterial)
-        .cornerRadius(12)
+        .background(
+            RoundedRectangle(cornerRadius: 12)
+                .fill(.ultraThinMaterial)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 12)
+                        .fill(DesignSystem.colors.glass)
+                )
+        )
     }
 }
 

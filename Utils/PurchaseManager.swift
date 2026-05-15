@@ -23,7 +23,7 @@ class PurchaseManager: ObservableObject {
         do {
             let products = try await Product.products(for: [Self.adFreeProductId])
             guard let product = products.first else {
-                errorMessage = String(localized: "Product not found")
+                errorMessage = "商品が見つかりません"
                 isLoading = false
                 return
             }
@@ -34,7 +34,7 @@ class PurchaseManager: ObservableObject {
             case .userCancelled:
                 break
             default:
-                errorMessage = String(localized: "Purchase failed")
+                errorMessage = "購入に失敗しました"
             }
         } catch {
             errorMessage = error.localizedDescription

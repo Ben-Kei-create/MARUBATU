@@ -1,19 +1,44 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "NEXUS" : {
-      "comment" : "App title",
+    "" : {
+
+    },
+    "%lld" : {
+
+    },
+    "%lld / %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld / %2$lld"
+          }
+        }
+      }
+    },
+    "%lld%%" : {
+
+    },
+    "+%lld" : {
+
+    },
+    "●" : {
+
+    },
+    "2P Mode" : {
+      "comment" : "2 Player mode",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "NEXUS"
+            "value" : "2P Mode"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "NEXUS"
+            "value" : "2人プレイ"
           }
         }
       }
@@ -35,158 +60,20 @@
         }
       }
     },
-    "Play" : {
-      "comment" : "Play button",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Play"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "プレイ"
-          }
-        }
-      }
+    "About" : {
+
     },
-    "How to Play" : {
-      "comment" : "How to play button",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "How to Play"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "遊び方"
-          }
-        }
-      }
+    "Ad-Free Purchased" : {
+
     },
-    "Choose Mode" : {
-      "comment" : "Mode selection title",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Choose Mode"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "モード選択"
-          }
-        }
-      }
+    "Advertisement" : {
+
     },
-    "VS AI" : {
-      "comment" : "VS AI mode",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "VS AI"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "AI対戦"
-          }
-        }
-      }
+    "AI" : {
+
     },
-    "Play against the computer" : {
-      "comment" : "VS AI description",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Play against the computer"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "コンピューターと対戦"
-          }
-        }
-      }
-    },
-    "2P Mode" : {
-      "comment" : "2 Player mode",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "2P Mode"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "2人プレイ"
-          }
-        }
-      }
-    },
-    "Play with a friend" : {
-      "comment" : "2P Mode description",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Play with a friend"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "友達と一緒にプレイ"
-          }
-        }
-      }
-    },
-    "How to Play" : {
-      "comment" : "How to Play screen title",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "How to Play"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "遊び方"
-          }
-        }
-      }
-    },
-    "Got It" : {
-      "comment" : "Got It button",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Got It"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "わかった"
-          }
-        }
-      }
+    "App Language" : {
+
     },
     "Back" : {
       "comment" : "Back button",
@@ -201,74 +88,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "戻る"
-          }
-        }
-      }
-    },
-    "YOUR TURN" : {
-      "comment" : "Turn indicator",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "YOUR TURN"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "あなたのターン"
-          }
-        }
-      }
-    },
-    "YOU WIN" : {
-      "comment" : "Win message",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "YOU WIN"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "勝利"
-          }
-        }
-      }
-    },
-    "YOU LOSE" : {
-      "comment" : "Lose message",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "YOU LOSE"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "敗北"
-          }
-        }
-      }
-    },
-    "Play Again" : {
-      "comment" : "Play again button",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Play Again"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "もう一度"
           }
         }
       }
@@ -290,22 +109,45 @@
         }
       }
     },
-    "Select a Skill" : {
-      "comment" : "Skill selection title",
+    "Best Score" : {
+      "comment" : "Best score label",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Select a Skill"
+            "value" : "Best Score"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "スキル選択"
+            "value" : "最高スコア"
           }
         }
       }
+    },
+    "Change in iOS Settings → NEXUS" : {
+
+    },
+    "Choose Mode" : {
+      "comment" : "Mode selection title",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose Mode"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "モード選択"
+          }
+        }
+      }
+    },
+    "Continue" : {
+
     },
     "Energy" : {
       "comment" : "Energy label",
@@ -324,6 +166,193 @@
         }
       }
     },
+    "ENERGY" : {
+
+    },
+    "Energy %lld / 10" : {
+
+    },
+    "Enjoy uninterrupted gameplay" : {
+
+    },
+    "Got It" : {
+      "comment" : "Got It button",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Got It"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "わかった"
+          }
+        }
+      }
+    },
+    "How to Play" : {
+      "comment" : "How to play button",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How to Play"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "遊び方"
+          }
+        }
+      }
+    },
+    "Language" : {
+
+    },
+    "NEXUS" : {
+      "comment" : "App title",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NEXUS"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NEXUS"
+          }
+        }
+      }
+    },
+    "NEXUS © 2025" : {
+
+    },
+    "One-time purchase" : {
+
+    },
+    "Open" : {
+
+    },
+    "Play" : {
+      "comment" : "Play button",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Play"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プレイ"
+          }
+        }
+      }
+    },
+    "Play Again" : {
+      "comment" : "Play again button",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Play Again"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "もう一度"
+          }
+        }
+      }
+    },
+    "Play against the computer" : {
+      "comment" : "VS AI description",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Play against the computer"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "コンピューターと対戦"
+          }
+        }
+      }
+    },
+    "Play with a friend" : {
+      "comment" : "2P Mode description",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Play with a friend"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "友達と一緒にプレイ"
+          }
+        }
+      }
+    },
+    "Privacy Policy" : {
+
+    },
+    "Product not found" : {
+
+    },
+    "Purchase" : {
+
+    },
+    "Purchase failed" : {
+
+    },
+    "Remove Ads" : {
+
+    },
+    "Remove ads and enjoy\nuninterrupted gameplay" : {
+
+    },
+    "Remove All Ads" : {
+
+    },
+    "Restore Purchase" : {
+
+    },
+    "Score %lld" : {
+
+    },
+    "Select a Skill" : {
+      "comment" : "Skill selection title",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select a Skill"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スキル選択"
+          }
+        }
+      }
+    },
+    "Settings" : {
+
+    },
     "Skill" : {
       "comment" : "Skill button",
       "localizations" : {
@@ -341,6 +370,15 @@
         }
       }
     },
+    "Skill: %@" : {
+
+    },
+    "Sound & Feedback" : {
+
+    },
+    "Sound Effects" : {
+
+    },
     "Stats" : {
       "comment" : "Stats screen title",
       "localizations" : {
@@ -354,6 +392,49 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "統計"
+          }
+        }
+      }
+    },
+    "Terms of Service" : {
+
+    },
+    "Total Plays" : {
+      "comment" : "Total plays label",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total Plays"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "合計プレイ数"
+          }
+        }
+      }
+    },
+    "Version" : {
+
+    },
+    "Vibration" : {
+
+    },
+    "VS AI" : {
+      "comment" : "VS AI mode",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "VS AI"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AI対戦"
           }
         }
       }
@@ -375,19 +456,19 @@
         }
       }
     },
-    "Total Plays" : {
-      "comment" : "Total plays label",
+    "Win Streak" : {
+      "comment" : "Win streak label",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Total Plays"
+            "value" : "Win Streak"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "合計プレイ数"
+            "value" : "連勝数"
           }
         }
       }
@@ -409,36 +490,59 @@
         }
       }
     },
-    "Best Score" : {
-      "comment" : "Best score label",
+    "X" : {
+
+    },
+    "YOU" : {
+
+    },
+    "YOU LOSE" : {
+      "comment" : "Lose message",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Best Score"
+            "value" : "YOU LOSE"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "最高スコア"
+            "value" : "敗北"
           }
         }
       }
     },
-    "Win Streak" : {
-      "comment" : "Win streak label",
+    "YOU WIN" : {
+      "comment" : "Win message",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Win Streak"
+            "value" : "YOU WIN"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "連勝数"
+            "value" : "勝利"
+          }
+        }
+      }
+    },
+    "YOUR TURN" : {
+      "comment" : "Turn indicator",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "YOUR TURN"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "あなたのターン"
           }
         }
       }

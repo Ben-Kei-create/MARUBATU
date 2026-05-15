@@ -22,7 +22,7 @@ struct SkillTargetSelectionView: View {
                 .padding(DesignSystem.spacing.lg)
 
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("Skill: \(skillName)")
+                    Text("スキル: \(displaySkillName)")
                         .font(.system(size: 16, weight: .semibold))
                         .foregroundColor(DesignSystem.colors.textPrimary)
                         .tracking(0.3)
@@ -57,13 +57,13 @@ struct SkillTargetSelectionView: View {
 
                 if selectedTargetIndex != nil {
                     GradientButton(
-                        label: "Confirm",
+                        label: "決定",
                         action: confirmSelection
                     )
                     .padding(DesignSystem.spacing.lg)
                 } else {
                     GlassButton(
-                        label: "Cancel",
+                        label: "キャンセル",
                         action: { navigationPath.removeLast() }
                     )
                     .padding(DesignSystem.spacing.lg)
@@ -77,8 +77,12 @@ struct SkillTargetSelectionView: View {
         skillsAvailable.first { $0.name == skillName }?.cost ?? 0
     }
 
+    private var displaySkillName: String {
+        skillsAvailable.first { $0.name == skillName }?.displayName ?? skillName
+    }
+
     private var targetPrompt: String {
-        usesAreaTarget ? "Select a 2x2 area" : "Select a target line"
+        usesAreaTarget ? "2x2エリアを選択" : "対象ラインを選択"
     }
 
     private var usesAreaTarget: Bool {
@@ -91,29 +95,29 @@ struct SkillTargetSelectionView: View {
 
     private var lineTargetSections: some View {
         VStack(spacing: DesignSystem.spacing.lg) {
-            TargetSection(title: "Horizontal Lines") {
+            TargetSection(title: "横ライン") {
                 ForEach(0..<5, id: \.self) { row in
                     targetButton(
-                        label: "Row \(row + 1)",
+                        label: "\(row + 1)行目",
                         targetIndex: GameViewModel.rowTarget(row)
                     )
                 }
             }
 
-            TargetSection(title: "Vertical Lines") {
+            TargetSection(title: "縦ライン") {
                 ForEach(0..<4, id: \.self) { column in
                     targetButton(
-                        label: "Column \(column + 1)",
+                        label: "\(column + 1)列目",
                         targetIndex: GameViewModel.columnTarget(column)
                     )
                 }
             }
 
             if allowsDiagonalTargets {
-                TargetSection(title: "Diagonal Lines") {
+                TargetSection(title: "斜めライン") {
                     ForEach(0..<8, id: \.self) { diagonal in
                         targetButton(
-                            label: "Diagonal \(diagonal + 1)",
+                            label: "斜め \(diagonal + 1)",
                             targetIndex: GameViewModel.diagonalTarget(diagonal)
                         )
                     }
@@ -123,11 +127,11 @@ struct SkillTargetSelectionView: View {
     }
 
     private var areaTargetSections: some View {
-        TargetSection(title: "2x2 Areas") {
+        TargetSection(title: "2x2エリア") {
             ForEach(0..<4, id: \.self) { row in
                 ForEach(0..<3, id: \.self) { column in
                     targetButton(
-                        label: "Row \(row + 1), Column \(column + 1)",
+                        label: "\(row + 1)行目・\(column + 1)列目",
                         targetIndex: row * 4 + column
                     )
                 }

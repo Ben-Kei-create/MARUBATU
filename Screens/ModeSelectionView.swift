@@ -21,7 +21,7 @@ struct ModeSelectionView: View {
                 Spacer()
 
                 VStack(spacing: DesignSystem.spacing.lg) {
-                    Text("Choose Mode")
+                    Text(L.chooseMode)
                         .font(DesignSystem.typography.titleFont)
                         .tracking(2.5)
                         .foregroundColor(DesignSystem.colors.textPrimary)
@@ -31,8 +31,8 @@ struct ModeSelectionView: View {
 
                     ModeCard(
                         icon: "cpu",
-                        title: "VS AI",
-                        subtitle: "Play against the computer",
+                        title: L.vsAI,
+                        subtitle: L.vsAIDesc,
                         action: {
                             navigationPath.append(.gameplay(mode: .vsAI))
                         }
@@ -40,8 +40,8 @@ struct ModeSelectionView: View {
 
                     ModeCard(
                         icon: "person.2.fill",
-                        title: "2P Mode",
-                        subtitle: "Play with a friend",
+                        title: L.twoPlayerMode,
+                        subtitle: L.twoPlayerDesc,
                         action: {
                             navigationPath.append(.gameplay(mode: .twoPlayer))
                         }

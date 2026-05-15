@@ -154,9 +154,10 @@
 				};
 			};
 			buildConfigurationList = A59FE7862FB3554000F9A400 /* Build configuration list for PBXProject "marubatu" */;
-			developmentRegion = en;
+			developmentRegion = ja;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				ja,
 				en,
 				Base,
 			);

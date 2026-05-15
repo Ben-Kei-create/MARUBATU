@@ -70,7 +70,7 @@ struct GameplayView: View {
                             .font(.system(size: 14, weight: .light))
                             .foregroundColor(DesignSystem.colors.accentBlue)
 
-                        Text("ENERGY")
+                        Text(L.energy)
                             .font(.system(size: 12, weight: .light))
                             .foregroundColor(DesignSystem.colors.textSecondary)
                             .tracking(0.5)
@@ -81,7 +81,7 @@ struct GameplayView: View {
                     EnergyBar(current: vm.energy, max: 10)
 
                     HStack(spacing: 12) {
-                        GradientButton(label: "Skill", action: {
+                        GradientButton(label: L.skill, action: {
                             guard !vm.isAITurn else { return }
                             navigationPath.append(.skillSelection)
                         })

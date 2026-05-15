@@ -73,7 +73,7 @@ struct AdInterstitialView: View {
                                 .tracking(3)
                                 .foregroundColor(.white)
 
-                            Text(String(localized: "Remove ads and enjoy\nuninterrupted gameplay"))
+                            Text("広告を非表示にして\n快適にプレイ")
                                 .font(.system(size: 13, weight: .light))
                                 .foregroundColor(.white.opacity(0.6))
                                 .multilineTextAlignment(.center)
@@ -81,7 +81,7 @@ struct AdInterstitialView: View {
                         }
                     }
 
-                    Text(String(localized: "Advertisement"))
+                    Text("広告")
                         .font(.system(size: 11, weight: .light))
                         .foregroundColor(.white.opacity(0.3))
                         .tracking(1)
@@ -96,7 +96,7 @@ struct AdInterstitialView: View {
                         HStack(spacing: 8) {
                             Image(systemName: "star.fill")
                                 .font(.system(size: 14))
-                            Text(String(localized: "Remove Ads"))
+                            Text("広告を非表示")
                                 .font(.system(size: 16, weight: .medium))
                         }
                         .foregroundColor(.white)
@@ -117,7 +117,7 @@ struct AdInterstitialView: View {
 
                     if canClose {
                         Button(action: { adManager.dismissAd() }) {
-                            Text(String(localized: "Continue"))
+                            Text("続ける")
                                 .font(.system(size: 15, weight: .light))
                                 .foregroundColor(.white.opacity(0.5))
                         }

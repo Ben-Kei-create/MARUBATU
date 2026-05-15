@@ -16,9 +16,12 @@ struct IconButton: View {
                 .frame(width: 44, height: 44)
                 .background(
                     Circle()
-                        .fill(backgroundColor)
+                        .fill(.ultraThinMaterial)
+                        .overlay(
+                            Circle()
+                                .fill(backgroundColor)
+                        )
                 )
-                .background(.ultraThinMaterial)
                 .overlay(
                     Circle()
                         .stroke(foregroundColor.opacity(0.2), lineWidth: 0.5)

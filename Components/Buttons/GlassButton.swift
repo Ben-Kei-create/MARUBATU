@@ -14,9 +14,14 @@ struct GlassButton: View {
                 .foregroundColor(textColor)
                 .frame(maxWidth: .infinity)
                 .frame(height: 56)
-                .background(DesignSystem.colors.glass)
-                .background(.ultraThinMaterial)
-                .cornerRadius(14)
+                .background(
+                    RoundedRectangle(cornerRadius: 14)
+                        .fill(.ultraThinMaterial)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 14)
+                                .fill(DesignSystem.colors.glass)
+                        )
+                )
                 .overlay(
                     RoundedRectangle(cornerRadius: 14)
                         .stroke(textColor.opacity(0.4), lineWidth: 1.0)

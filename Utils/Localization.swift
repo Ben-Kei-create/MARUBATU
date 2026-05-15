@@ -1,29 +1,29 @@
 import Foundation
 
 struct L {
-    static let appTitle = String(localized: "NEXUS")
-    static let appSubtitle = String(localized: "A new 4x5 strategy game")
-    static let play = String(localized: "Play")
-    static let howToPlay = String(localized: "How to Play")
-    static let chooseMode = String(localized: "Choose Mode")
-    static let vsAI = String(localized: "VS AI")
-    static let vsAIDesc = String(localized: "Play against the computer")
-    static let twoPlayerMode = String(localized: "2P Mode")
-    static let twoPlayerDesc = String(localized: "Play with a friend")
-    static let gotIt = String(localized: "Got It")
-    static let back = String(localized: "Back")
-    static let yourTurn = String(localized: "YOUR TURN")
-    static let youWin = String(localized: "YOU WIN")
-    static let youLose = String(localized: "YOU LOSE")
-    static let playAgain = String(localized: "Play Again")
-    static let backToModeSelect = String(localized: "Back to Mode Select")
-    static let selectSkill = String(localized: "Select a Skill")
-    static let energy = String(localized: "Energy")
-    static let skill = String(localized: "Skill")
-    static let stats = String(localized: "Stats")
-    static let winRate = String(localized: "Win Rate")
-    static let totalPlays = String(localized: "Total Plays")
-    static let wins = String(localized: "Wins")
-    static let bestScore = String(localized: "Best Score")
-    static let winStreak = String(localized: "Win Streak")
+    static let appTitle = "NEXUS"
+    static let appSubtitle = "新しい4x5戦略ゲーム"
+    static let play = "プレイ"
+    static let howToPlay = "遊び方"
+    static let chooseMode = "モード選択"
+    static let vsAI = "AI対戦"
+    static let vsAIDesc = "コンピューターと対戦"
+    static let twoPlayerMode = "2人プレイ"
+    static let twoPlayerDesc = "友達と一緒にプレイ"
+    static let gotIt = "わかった"
+    static let back = "戻る"
+    static let yourTurn = "あなたのターン"
+    static let youWin = "勝利"
+    static let youLose = "敗北"
+    static let playAgain = "もう一度"
+    static let backToModeSelect = "モード選択に戻る"
+    static let selectSkill = "スキル選択"
+    static let energy = "エネルギー"
+    static let skill = "スキル"
+    static let stats = "統計"
+    static let winRate = "勝率"
+    static let totalPlays = "合計プレイ数"
+    static let wins = "勝利数"
+    static let bestScore = "最高スコア"
+    static let winStreak = "連勝数"
 }

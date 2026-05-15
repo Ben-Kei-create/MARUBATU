@@ -7,7 +7,7 @@ struct PlayerScorePanel: View {
 
     var body: some View {
         VStack(alignment: .center, spacing: 8) {
-            Text(isPlayer ? "YOU" : "AI")
+            Text(isPlayer ? "あなた" : "相手")
                 .font(.system(size: 12, weight: .light))
                 .foregroundColor(DesignSystem.colors.textSecondary)
                 .tracking(0.8)

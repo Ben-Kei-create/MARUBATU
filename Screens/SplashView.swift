@@ -82,7 +82,7 @@ struct SplashView: View {
                     }
                 }
 
-                Text(String(localized: "A new 4x5 strategy game"))
+                Text(L.appSubtitle)
                     .font(.system(size: 13, weight: .light))
                     .tracking(0.6)
                     .foregroundColor(DesignSystem.colors.textSecondary)

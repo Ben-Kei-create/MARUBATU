@@ -144,7 +144,7 @@ final class GameViewModel: ObservableObject {
         frozenCells = []
         frozenTurnsRemaining = 0
         isGameOver = false
-        turnLabel = "YOUR TURN"
+        turnLabel = "あなたのターン"
         isAITurn = false
         resultWon = false
         resultScore = 0
@@ -185,7 +185,7 @@ final class GameViewModel: ObservableObject {
         frozenCells = []
         frozenTurnsRemaining = 0
         isGameOver = false
-        turnLabel = "YOUR TURN"
+        turnLabel = "あなたのターン"
         isAITurn = false
         resultWon = false
         resultScore = 0
@@ -234,7 +234,7 @@ final class GameViewModel: ObservableObject {
 
         if mode == .vsAI && currentPlayer == .o {
             isAITurn = true
-            turnLabel = "AI THINKING..."
+            turnLabel = "AI思考中..."
             aiMove()
         } else {
             isAITurn = false
@@ -245,9 +245,9 @@ final class GameViewModel: ObservableObject {
     private func updateTurnLabel() {
         switch mode {
         case .vsAI:
-            turnLabel = currentPlayer == .x ? "YOUR TURN" : "AI THINKING..."
+            turnLabel = currentPlayer == .x ? "あなたのターン" : "AI思考中..."
         case .twoPlayer:
-            turnLabel = currentPlayer == .x ? "P1 TURN" : "P2 TURN"
+            turnLabel = currentPlayer == .x ? "P1のターン" : "P2のターン"
         }
     }
 
@@ -333,7 +333,7 @@ final class GameViewModel: ObservableObject {
         resultScore = winningScore
         isAITurn = false
         isGameOver = true
-        turnLabel = won ? "YOU WIN" : "YOU LOSE"
+        turnLabel = won ? "勝利" : "敗北"
         hasRecordedResult = true
 
         StatsViewModel().recordResult(won: won, score: winningScore, mode: mode)

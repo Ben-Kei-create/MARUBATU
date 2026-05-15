@@ -30,7 +30,7 @@ struct SettingsView: View {
                         action: { navigationPath.removeLast() }
                     )
                     Spacer()
-                    Text(String(localized: "Settings"))
+                    Text("設定")
                         .font(.system(size: 16, weight: .semibold))
                         .foregroundColor(DesignSystem.colors.textPrimary)
                         .tracking(0.5)
@@ -46,16 +46,16 @@ struct SettingsView: View {
                     VStack(spacing: DesignSystem.spacing.lg) {
 
                         // ── サウンド・バイブ ──
-                        SettingsSectionView(title: String(localized: "Sound & Feedback")) {
+                        SettingsSectionView(title: "サウンド・フィードバック") {
                             SettingsToggleRow(
                                 icon: "speaker.wave.2.fill",
-                                label: String(localized: "Sound Effects"),
+                                label: "効果音",
                                 isOn: $soundEnabled
                             )
                             SectionDivider()
                             SettingsToggleRow(
                                 icon: "iphone.radiowaves.left.and.right",
-                                label: String(localized: "Vibration"),
+                                label: "バイブレーション",
                                 isOn: $vibrationEnabled
                             )
                         }
@@ -63,17 +63,17 @@ struct SettingsView: View {
                         .offset(y: section1Opacity == 0 ? sectionsOffset : 0)
 
                         // ── 広告・購入 ──
-                        SettingsSectionView(title: String(localized: "Purchase")) {
+                        SettingsSectionView(title: "購入") {
                             if purchaseManager.isAdFree {
                                 HStack(spacing: 12) {
                                     Image(systemName: "checkmark.seal.fill")
                                         .font(.system(size: 18, weight: .light))
                                         .foregroundColor(DesignSystem.colors.accentBlue)
                                     VStack(alignment: .leading, spacing: 3) {
-                                        Text(String(localized: "Ad-Free Purchased"))
+                                        Text("広告非表示を購入済み")
                                             .font(.system(size: 14, weight: .medium))
                                             .foregroundColor(DesignSystem.colors.textPrimary)
-                                        Text(String(localized: "Enjoy uninterrupted gameplay"))
+                                        Text("広告なしでゲームを楽しめます")
                                             .font(.system(size: 12, weight: .light))
                                             .foregroundColor(DesignSystem.colors.textSecondary)
                                     }
@@ -104,10 +104,10 @@ struct SettingsView: View {
                                                 .foregroundColor(DesignSystem.colors.accentBlue)
                                         }
                                         VStack(alignment: .leading, spacing: 3) {
-                                            Text(String(localized: "Remove All Ads"))
+                                            Text("すべての広告を非表示")
                                                 .font(.system(size: 14, weight: .medium))
                                                 .foregroundColor(DesignSystem.colors.textPrimary)
-                                            Text(String(localized: "One-time purchase"))
+                                            Text("買い切り購入")
                                                 .font(.system(size: 12, weight: .light))
                                                 .foregroundColor(DesignSystem.colors.textSecondary)
                                         }
@@ -135,7 +135,7 @@ struct SettingsView: View {
                                             .font(.system(size: 16, weight: .light))
                                             .foregroundColor(DesignSystem.colors.textSecondary)
                                             .frame(width: 32, height: 32)
-                                        Text(String(localized: "Restore Purchase"))
+                                        Text("購入を復元")
                                             .font(.system(size: 14, weight: .light))
                                             .foregroundColor(DesignSystem.colors.textSecondary)
                                         Spacer()
@@ -157,17 +157,17 @@ struct SettingsView: View {
                         .offset(y: section2Opacity == 0 ? sectionsOffset : 0)
 
                         // ── 言語 ──
-                        SettingsSectionView(title: String(localized: "Language")) {
+                        SettingsSectionView(title: "言語") {
                             HStack(spacing: 12) {
                                 Image(systemName: "globe")
                                     .font(.system(size: 18, weight: .light))
                                     .foregroundColor(DesignSystem.colors.textSecondary)
                                     .frame(width: 32, height: 32)
                                 VStack(alignment: .leading, spacing: 3) {
-                                    Text(String(localized: "App Language"))
+                                    Text("アプリの言語")
                                         .font(.system(size: 14, weight: .medium))
                                         .foregroundColor(DesignSystem.colors.textPrimary)
-                                    Text(String(localized: "Change in iOS Settings → NEXUS"))
+                                    Text("iOSの設定 → NEXUS で変更")
                                         .font(.system(size: 12, weight: .light))
                                         .foregroundColor(DesignSystem.colors.textSecondary)
                                 }
@@ -177,7 +177,7 @@ struct SettingsView: View {
                                         UIApplication.shared.open(url)
                                     }
                                 }) {
-                                    Text(String(localized: "Open"))
+                                    Text("開く")
                                         .font(.system(size: 13, weight: .medium))
                                         .foregroundColor(DesignSystem.colors.accentBlue)
                                 }
@@ -188,21 +188,21 @@ struct SettingsView: View {
                         .offset(y: section3Opacity == 0 ? sectionsOffset : 0)
 
                         // ── アプリ情報 ──
-                        SettingsSectionView(title: String(localized: "About")) {
+                        SettingsSectionView(title: "アプリ情報") {
                             SettingsInfoRow(
                                 icon: "info.circle",
-                                label: String(localized: "Version"),
+                                label: "バージョン",
                                 value: appVersion
                             )
                             SectionDivider()
                             SettingsLinkRow(
                                 icon: "hand.raised",
-                                label: String(localized: "Privacy Policy")
+                                label: "プライバシーポリシー"
                             )
                             SectionDivider()
                             SettingsLinkRow(
                                 icon: "doc.text",
-                                label: String(localized: "Terms of Service")
+                                label: "利用規約"
                             )
                         }
                         .opacity(section4Opacity)
@@ -272,10 +272,12 @@ private struct SettingsSectionView<Content: View>: View {
             }
             .background(
                 RoundedRectangle(cornerRadius: 16)
-                    .fill(DesignSystem.colors.glass)
+                    .fill(.ultraThinMaterial)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 16)
+                            .fill(DesignSystem.colors.glass)
+                    )
             )
-            .background(.ultraThinMaterial)
-            .cornerRadius(16)
             .overlay(
                 RoundedRectangle(cornerRadius: 16)
                     .stroke(DesignSystem.colors.textSecondary.opacity(0.12), lineWidth: 0.5)

@@ -17,15 +17,18 @@ struct GameCell: View {
         Button(action: action) {
             ZStack {
                 Circle()
-                    .stroke(
-                        DesignSystem.colors.textSecondary.opacity(0.2),
-                        lineWidth: 1
-                    )
-                    .background(
+                    .fill(.ultraThinMaterial)
+                    .overlay(
                         Circle()
                             .fill(DesignSystem.colors.glass)
                     )
-                    .background(.ultraThinMaterial)
+                    .overlay(
+                        Circle()
+                            .stroke(
+                                DesignSystem.colors.textSecondary.opacity(0.2),
+                                lineWidth: 1
+                            )
+                    )
                     .frame(width: 72, height: 72)
 
                 if isSelected {

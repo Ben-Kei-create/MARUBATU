@@ -10,8 +10,12 @@ struct ContentView: View {
         ZStack {
             NavigationStack(path: $navigationPath) {
                 TitleView(navigationPath: $navigationPath)
+                    .navigationBarBackButtonHidden(true)
+                    .toolbar(.hidden, for: .navigationBar)
                     .navigationDestination(for: NavigationDestination.self) { destination in
                         destinationView(for: destination)
+                            .navigationBarBackButtonHidden(true)
+                            .toolbar(.hidden, for: .navigationBar)
                     }
             }
             .background(DesignSystem.colors.darkBg.ignoresSafeArea())

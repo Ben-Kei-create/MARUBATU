@@ -3,16 +3,17 @@ import SwiftUI
 struct SkillData: Identifiable {
     let id = UUID()
     let name: String
+    let displayName: String
     let description: String
     let cost: Int
     let icon: String
 }
 
 let skillsAvailable: [SkillData] = [
-    SkillData(name: "Line Break", description: "Remove all marks from a selected line.", cost: 3, icon: "bolt.fill"),
-    SkillData(name: "Color Change", description: "Convert selected enemy marks into your marks.", cost: 4, icon: "paintbrush.fill"),
-    SkillData(name: "Area Freeze", description: "Freeze selected cells for one turn.", cost: 5, icon: "snowflake"),
-    SkillData(name: "Reset", description: "Reset part of the board.", cost: 6, icon: "arrow.clockwise")
+    SkillData(name: "Line Break", displayName: "ラインブレイク", description: "選んだ行または列のマークをすべて消します。", cost: 3, icon: "bolt.fill"),
+    SkillData(name: "Color Change", displayName: "カラー変更", description: "敵のマークを最大3つ自分のマークに変えます。", cost: 4, icon: "paintbrush.fill"),
+    SkillData(name: "Area Freeze", displayName: "エリア凍結", description: "選んだ2x2エリアを2ターン凍結します。", cost: 5, icon: "snowflake"),
+    SkillData(name: "Reset", displayName: "リセット", description: "選んだ2x2エリアを空に戻します。", cost: 6, icon: "arrow.clockwise")
 ]
 
 struct SkillSelectionView: View {
@@ -31,15 +32,14 @@ struct SkillSelectionView: View {
                         Image(systemName: "bolt.fill")
                             .font(.system(size: 12, weight: .light))
                             .foregroundColor(DesignSystem.colors.accentBlue)
-                        Text("Energy \(vm.energy) / 10")
+                        Text("エネルギー \(vm.energy) / 10")
                             .font(.system(size: 13, weight: .light))
                             .foregroundColor(DesignSystem.colors.textSecondary)
                     }
-                    Spacer()
                 }
                 .padding(DesignSystem.spacing.lg)
 
-                Text("Select a Skill")
+                Text("スキル選択")
                     .font(.system(size: 18, weight: .semibold))
                     .foregroundColor(DesignSystem.colors.textPrimary)
                     .tracking(0.3)
@@ -54,7 +54,7 @@ struct SkillSelectionView: View {
                     .padding(DesignSystem.spacing.lg)
                 }
 
-                GlassButton(label: "Cancel", action: { navigationPath.removeLast() })
+                GlassButton(label: "キャンセル", action: { navigationPath.removeLast() })
                     .padding(DesignSystem.spacing.lg)
             }
         }
@@ -84,7 +84,7 @@ struct SkillRow: View {
                     .frame(width: 36, alignment: .center)
 
                 VStack(alignment: .leading, spacing: 4) {
-                    Text(skill.name)
+                    Text(skill.displayName)
                         .font(.system(size: 15, weight: .medium))
                         .foregroundColor(isAvailable ? DesignSystem.colors.textPrimary : DesignSystem.colors.unavailable)
                     Text(skill.description)
@@ -100,9 +100,14 @@ struct SkillRow: View {
                     .frame(width: 30, alignment: .center)
             }
             .padding(DesignSystem.spacing.md)
-            .background(DesignSystem.colors.glass)
-            .background(.ultraThinMaterial)
-            .cornerRadius(12)
+            .background(
+                RoundedRectangle(cornerRadius: 12)
+                    .fill(.ultraThinMaterial)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 12)
+                            .fill(DesignSystem.colors.glass)
+                    )
+            )
             .overlay(
                 RoundedRectangle(cornerRadius: 12)
                     .stroke((isAvailable ? DesignSystem.colors.accentBlue : DesignSystem.colors.unavailable).opacity(0.3), lineWidth: 0.5)
