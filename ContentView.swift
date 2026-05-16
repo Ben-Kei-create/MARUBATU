@@ -39,6 +39,8 @@ struct ContentView: View {
         switch destination {
         case .modeSelection:
             ModeSelectionView(navigationPath: $navigationPath)
+        case .tutorial:
+            TutorialView(navigationPath: $navigationPath)
         case .howToPlay:
             HowToPlayView(navigationPath: $navigationPath)
         case .gameplay(let mode):

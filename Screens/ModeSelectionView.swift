@@ -18,40 +18,45 @@ struct ModeSelectionView: View {
                 }
                 .padding(DesignSystem.spacing.lg)
 
-                Spacer()
+                ScrollView(.vertical, showsIndicators: false) {
+                    VStack(spacing: DesignSystem.spacing.lg) {
+                        Text(L.chooseMode)
+                            .font(DesignSystem.typography.titleFont)
+                            .tracking(2.5)
+                            .foregroundColor(DesignSystem.colors.textPrimary)
+                            .padding(.bottom, DesignSystem.spacing.sm)
 
-                VStack(spacing: DesignSystem.spacing.lg) {
-                    Text(L.chooseMode)
-                        .font(DesignSystem.typography.titleFont)
-                        .tracking(2.5)
-                        .foregroundColor(DesignSystem.colors.textPrimary)
+                        ModeCard(
+                            icon: "sparkles",
+                            title: "詰めNEXUS",
+                            subtitle: "◯×から始める戦術チュートリアル",
+                            action: {
+                                navigationPath.append(.tutorial)
+                            }
+                        )
 
-                    Spacer()
-                        .frame(height: DesignSystem.spacing.lg)
+                        ModeCard(
+                            icon: "cpu",
+                            title: L.vsAI,
+                            subtitle: L.vsAIDesc,
+                            action: {
+                                navigationPath.append(.gameplay(mode: .vsAI))
+                            }
+                        )
 
-                    ModeCard(
-                        icon: "cpu",
-                        title: L.vsAI,
-                        subtitle: L.vsAIDesc,
-                        action: {
-                            navigationPath.append(.gameplay(mode: .vsAI))
-                        }
-                    )
-
-                    ModeCard(
-                        icon: "person.2.fill",
-                        title: L.twoPlayerMode,
-                        subtitle: L.twoPlayerDesc,
-                        action: {
-                            navigationPath.append(.gameplay(mode: .twoPlayer))
-                        }
-                    )
-
-                    Spacer()
+                        ModeCard(
+                            icon: "person.2.fill",
+                            title: L.twoPlayerMode,
+                            subtitle: L.twoPlayerDesc,
+                            action: {
+                                navigationPath.append(.gameplay(mode: .twoPlayer))
+                            }
+                        )
+                    }
+                    .padding(.horizontal, DesignSystem.spacing.lg)
+                    .padding(.top, DesignSystem.spacing.xl)
+                    .padding(.bottom, DesignSystem.spacing.xxl)
                 }
-                .padding(.horizontal, DesignSystem.spacing.lg)
-
-                Spacer()
             }
         }
         .ignoresSafeArea()

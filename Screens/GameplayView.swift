@@ -58,7 +58,7 @@ struct GameplayView: View {
 
                 Spacer()
 
-                GameBoard(marks: vm.board, selectedIndex: nil) { index in
+                GameBoard(marks: vm.board, selectedIndex: nil, frozenIndices: vm.frozenCells) { index in
                     vm.placeMark(at: index)
                 }
 

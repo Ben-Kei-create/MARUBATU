@@ -7,6 +7,7 @@ enum GameMode {
 
 enum NavigationDestination: Hashable {
     case modeSelection
+    case tutorial
     case howToPlay
     case gameplay(mode: GameMode)
     case skillSelection
@@ -19,6 +20,8 @@ enum NavigationDestination: Hashable {
         switch self {
         case .modeSelection:
             hasher.combine("modeSelection")
+        case .tutorial:
+            hasher.combine("tutorial")
         case .howToPlay:
             hasher.combine("howToPlay")
         case .gameplay(let mode):
@@ -44,6 +47,7 @@ enum NavigationDestination: Hashable {
     static func == (lhs: NavigationDestination, rhs: NavigationDestination) -> Bool {
         switch (lhs, rhs) {
         case (.modeSelection, .modeSelection): return true
+        case (.tutorial, .tutorial): return true
         case (.howToPlay, .howToPlay): return true
         case (.gameplay(let lhsMode), .gameplay(let rhsMode)): return lhsMode == rhsMode
         case (.skillSelection, .skillSelection): return true

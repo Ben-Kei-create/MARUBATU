@@ -3,6 +3,8 @@ import SwiftUI
 struct GameBoard: View {
     let marks: [[CellMark]]
     let selectedIndex: Int?
+    var highlightedIndices: Set<Int> = []
+    var frozenIndices: Set<Int> = []
     let onCellTap: (Int) -> Void
 
     var body: some View {
@@ -18,6 +20,8 @@ struct GameBoard: View {
                             index: index,
                             mark: mark,
                             isSelected: isSelected,
+                            isHighlighted: highlightedIndices.contains(index),
+                            isFrozen: frozenIndices.contains(index),
                             action: { onCellTap(index) }
                         )
                     }
