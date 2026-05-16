@@ -30,7 +30,7 @@ struct EnergyBar: View {
             }
 
             Text("\(current) / \(max)")
-                .font(.system(size: 13, weight: .light))
+                .font(.app(size: 13, weight: .light))
                 .foregroundColor(DesignSystem.colors.textSecondary)
                 .frame(width: 50, alignment: .trailing)
         }
@@ -46,7 +46,7 @@ struct EnergyBar: View {
                     .foregroundColor(DesignSystem.colors.accentBlue)
 
                 Text("ENERGY")
-                    .font(.system(size: 12, weight: .light))
+                    .font(.app(size: 12, weight: .light))
                     .foregroundColor(DesignSystem.colors.textSecondary)
                     .tracking(0.5)
             }

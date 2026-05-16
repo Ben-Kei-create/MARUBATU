@@ -1,6 +1,17 @@
 import Combine
 import SwiftUI
 
+struct ScoringEvent: Identifiable {
+    let id = UUID()
+    let player: CellMark
+    let title: String
+    let subtitle: String
+    let totalPoints: Int
+    let lineCount: Int
+    let cells: Set<Int>
+    let lineSegments: [[Int]]
+}
+
 @MainActor
 final class GameSessionStore: ObservableObject {
     private var currentViewModel: GameViewModel?
@@ -35,6 +46,12 @@ final class GameViewModel: ObservableObject {
     @Published var isAITurn: Bool
     @Published var resultWon: Bool
     @Published var resultScore: Int
+    @Published var scoringEvent: ScoringEvent?
+    @Published var scoringHighlightCells: Set<Int>
+    @Published var scoringLineSegments: [[Int]]
+    @Published var scoringLinePlayer: CellMark?
+    @Published var scoringPulseID: Int
+    @Published var energyPulseID: Int
 
     let mode: GameMode
 
@@ -132,6 +149,7 @@ final class GameViewModel: ObservableObject {
     private var lastPlayer: CellMark?
     private var hasRecordedResult = false
     private var aiTask: Task<Void, Never>?
+    private var feedbackTask: Task<Void, Never>?
 
     init(mode: GameMode) {
         self.mode = mode
@@ -148,6 +166,12 @@ final class GameViewModel: ObservableObject {
         isAITurn = false
         resultWon = false
         resultScore = 0
+        scoringEvent = nil
+        scoringHighlightCells = []
+        scoringLineSegments = []
+        scoringLinePlayer = nil
+        scoringPulseID = 0
+        energyPulseID = 0
     }
 
     func placeMark(at index: Int) {
@@ -173,9 +197,24 @@ final class GameViewModel: ObservableObject {
         checkWinCondition()
     }
 
+    func activateSkill(_ skillName: String, boardIndex: Int) {
+        guard let skill = Skill(rawValue: skillName) else { return }
+        let targetIndex = defaultTargetIndex(for: skill, boardIndex: boardIndex)
+        activateSkill(skillName, targetIndex: targetIndex)
+    }
+
+    func canActivateSkill(_ skillName: String) -> Bool {
+        guard !isGameOver else { return false }
+        guard !(mode == .vsAI && isAITurn) else { return false }
+        guard let skill = Skill(rawValue: skillName) else { return false }
+        return energy >= skill.cost
+    }
+
     func resetGame() {
         aiTask?.cancel()
         aiTask = nil
+        feedbackTask?.cancel()
+        feedbackTask = nil
         board = Self.emptyBoard()
         currentPlayer = .x
         energy = 0
@@ -193,6 +232,12 @@ final class GameViewModel: ObservableObject {
         freezeCounters = [:]
         lastPlayer = nil
         hasRecordedResult = false
+        scoringEvent = nil
+        scoringHighlightCells = []
+        scoringLineSegments = []
+        scoringLinePlayer = nil
+        scoringPulseID = 0
+        energyPulseID = 0
     }
 
     private static func emptyBoard() -> [[CellMark]] {
@@ -210,6 +255,16 @@ final class GameViewModel: ObservableObject {
         addScore(scoring.points + scoring.bonus, to: currentPlayer)
         totalBonus += scoring.bonus
         energy = min(Constants.maxEnergy, energy + 1)
+        energyPulseID += 1
+
+        if scoring.points + scoring.bonus > 0 {
+            publishScoringEvent(
+                player: currentPlayer,
+                points: scoring.points,
+                bonus: scoring.bonus,
+                lines: scoring.lines
+            )
+        }
 
         advanceFrozenTurns()
         refreshScoredLines()
@@ -251,16 +306,65 @@ final class GameViewModel: ObservableObject {
         }
     }
 
-    private func checkLines() -> (points: Int, bonus: Int) {
+    private func checkLines() -> (points: Int, bonus: Int, lines: [BoardLine]) {
         let newLines = findLines(for: currentPlayer, on: board)
             .filter { !scoredLines.contains($0.identity) }
 
-        guard !newLines.isEmpty else { return (0, 0) }
+        guard !newLines.isEmpty else { return (0, 0, []) }
 
         newLines.forEach { scoredLines.insert($0.identity) }
         let points = newLines.reduce(0) { $0 + $1.points }
         let bonus = max(0, newLines.count - 1) * Constants.comboBonus
-        return (points, bonus)
+        return (points, bonus, newLines)
+    }
+
+    private func publishScoringEvent(
+        player: CellMark,
+        points: Int,
+        bonus: Int,
+        lines: [BoardLine]
+    ) {
+        let lineCells = Set(lines.flatMap(\.cells))
+        let longestLine = lines.map(\.cells.count).max() ?? 0
+        let total = points + bonus
+        let title: String
+
+        if lines.count >= 2 {
+            title = "ネクサス連鎖 x\(lines.count)"
+        } else if longestLine >= 5 {
+            title = "フルNEXUS"
+        } else if longestLine == 4 {
+            title = "4ライン完成"
+        } else {
+            title = "ライン完成"
+        }
+
+        let subtitle = bonus > 0
+            ? "+\(points) / ボーナス +\(bonus)"
+            : "+\(points)"
+
+        scoringHighlightCells = lineCells
+        scoringLineSegments = lines.map(\.cells)
+        scoringLinePlayer = player
+        scoringPulseID += 1
+        scoringEvent = ScoringEvent(
+            player: player,
+            title: title,
+            subtitle: subtitle,
+            totalPoints: total,
+            lineCount: lines.count,
+            cells: lineCells,
+            lineSegments: scoringLineSegments
+        )
+
+        feedbackTask?.cancel()
+        feedbackTask = Task { @MainActor [weak self] in
+            try? await Task.sleep(nanoseconds: 3_200_000_000)
+            self?.scoringEvent = nil
+            self?.scoringHighlightCells = []
+            self?.scoringLineSegments = []
+            self?.scoringLinePlayer = nil
+        }
     }
 
     private func aiMove() {
@@ -349,6 +453,21 @@ final class GameViewModel: ObservableObject {
             return applyAreaFreeze(targetIndex: targetIndex)
         case .reset:
             return applyReset(targetIndex: targetIndex)
+        }
+    }
+
+    private func defaultTargetIndex(for skill: Skill, boardIndex: Int) -> Int {
+        let position = rowAndColumn(for: boardIndex)
+
+        switch skill {
+        case .lineBreak:
+            return Self.rowTarget(position.row)
+        case .colorChange:
+            return boardIndex
+        case .areaFreeze, .reset:
+            let row = min(position.row, Constants.rows - 2)
+            let column = min(position.column, Constants.columns - 2)
+            return index(row: row, column: column)
         }
     }
 

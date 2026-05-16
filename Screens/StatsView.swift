@@ -15,13 +15,14 @@ struct StatsView: View {
                     IconButton(iconName: "chevron.left", action: { navigationPath.removeLast() })
                     Spacer()
                     Text("統計")
-                        .font(.system(size: 18, weight: .semibold))
+                        .font(.app(size: 18, weight: .semibold))
                         .foregroundColor(DesignSystem.colors.textPrimary)
                         .tracking(0.5)
                     Spacer()
                     IconButton(iconName: "xmark", action: { navigationPath.removeLast() })
                 }
-                .padding(DesignSystem.spacing.lg)
+                .padding(.horizontal, DesignSystem.spacing.xl)
+                .padding(.vertical, DesignSystem.spacing.lg)
 
                 HStack(spacing: 16) {
                     ForEach(tabs, id: \.self) { tab in
@@ -44,10 +45,10 @@ struct StatsView: View {
 
                             VStack(spacing: 4) {
                                 Text("勝率")
-                                    .font(.system(size: 12, weight: .light))
+                                    .font(.app(size: 12, weight: .light))
                                     .foregroundColor(DesignSystem.colors.textSecondary)
                                 Text("\(Int((stats.winRate * 100).rounded()))%")
-                                    .font(.system(size: 28, weight: .thin))
+                                    .font(.app(size: 28, weight: .thin))
                                     .foregroundColor(DesignSystem.colors.accentBlue)
                             }
                         }
@@ -57,24 +58,25 @@ struct StatsView: View {
                             StatRow(label: "勝利数", value: "\(stats.totalWins)", valueColor: DesignSystem.colors.accentBlue)
                             StatRow(label: "最高スコア", value: "\(stats.bestScore)")
                             StatRow(label: "連勝数", value: "\(stats.winStreak)", valueColor: DesignSystem.colors.accentPurple)
+                            StatRow(label: "最大連勝", value: "\(stats.maxWinStreak)", valueColor: DesignSystem.colors.accentPurple)
                         }
                     }
                     .padding(DesignSystem.spacing.lg)
                 }
 
                 HStack(spacing: DesignSystem.spacing.lg) {
-                    Button(action: {}) {
+                    Button(action: { navigationPath.removeAll() }) {
                         Image(systemName: "house.fill")
                             .font(.system(size: 20, weight: .light))
                             .foregroundColor(DesignSystem.colors.textSecondary)
                     }
-                    Button(action: {}) {
+                    Button(action: { selectedTab = "総合" }) {
                         Image(systemName: "chart.bar.fill")
                             .font(.system(size: 20, weight: .light))
                             .foregroundColor(DesignSystem.colors.accentBlue)
                     }
                     Spacer()
-                    Button(action: {}) {
+                    Button(action: { navigationPath.append(.settings) }) {
                         Image(systemName: "person.fill")
                             .font(.system(size: 20, weight: .light))
                             .foregroundColor(DesignSystem.colors.textSecondary.opacity(0.5))
@@ -83,7 +85,6 @@ struct StatsView: View {
                 .padding(DesignSystem.spacing.lg)
             }
         }
-        .ignoresSafeArea()
         .onAppear {
             stats.load(mode: modeForSelectedTab)
         }
@@ -112,7 +113,7 @@ struct TabButton: View {
     var body: some View {
         Button(action: action) {
             Text(tab)
-                .font(.system(size: 13, weight: .medium))
+                .font(.app(size: 13, weight: .medium))
                 .foregroundColor(isSelected ? DesignSystem.colors.accentBlue : DesignSystem.colors.textSecondary)
                 .padding(.vertical, 8)
                 .padding(.horizontal, 12)
@@ -139,11 +140,11 @@ struct StatRow: View {
     var body: some View {
         HStack {
             Text(label)
-                .font(.system(size: 14, weight: .light))
+                .font(.app(size: 14, weight: .light))
                 .foregroundColor(DesignSystem.colors.textSecondary)
             Spacer()
             Text(value)
-                .font(.system(size: 16, weight: .medium))
+                .font(.app(size: 16, weight: .medium))
                 .foregroundColor(valueColor)
         }
         .padding(DesignSystem.spacing.md)

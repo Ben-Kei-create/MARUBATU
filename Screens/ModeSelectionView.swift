@@ -16,7 +16,8 @@ struct ModeSelectionView: View {
 
                     Spacer()
                 }
-                .padding(DesignSystem.spacing.lg)
+                .padding(.horizontal, DesignSystem.spacing.xl)
+                .padding(.vertical, DesignSystem.spacing.lg)
 
                 ScrollView(.vertical, showsIndicators: false) {
                     VStack(spacing: DesignSystem.spacing.lg) {
@@ -59,7 +60,6 @@ struct ModeSelectionView: View {
                 }
             }
         }
-        .ignoresSafeArea()
     }
 }
 

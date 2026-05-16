@@ -33,10 +33,10 @@ struct GlassPanel<Content: View>: View {
         GlassPanel {
             VStack(alignment: .leading, spacing: 8) {
                 Text("Panel Title")
-                    .font(.system(size: 16, weight: .medium))
+                    .font(.app(size: 16, weight: .medium))
                     .foregroundColor(DesignSystem.colors.textPrimary)
                 Text("Panel content goes here")
-                    .font(.system(size: 14, weight: .light))
+                    .font(.app(size: 14, weight: .light))
                     .foregroundColor(DesignSystem.colors.textSecondary)
             }
             .frame(maxWidth: .infinity, alignment: .leading)

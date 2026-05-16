@@ -59,7 +59,7 @@ struct SplashView: View {
                     // ── ロゴ ──
                     VStack(spacing: 6) {
                         Text("NEXUS")
-                            .font(.system(size: 44, weight: .thin))
+                            .font(.app(size: 44, weight: .thin))
                             .tracking(3)
                             .foregroundColor(DesignSystem.colors.textPrimary)
                             .shadow(color: DesignSystem.colors.accentBlue.opacity(0.8), radius: 16)
@@ -83,7 +83,7 @@ struct SplashView: View {
                 }
 
                 Text(L.appSubtitle)
-                    .font(.system(size: 13, weight: .light))
+                    .font(.app(size: 13, weight: .light))
                     .tracking(0.6)
                     .foregroundColor(DesignSystem.colors.textSecondary)
                     .opacity(subtitleOpacity)

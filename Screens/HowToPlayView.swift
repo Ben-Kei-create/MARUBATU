@@ -17,7 +17,7 @@ struct HowToPlayView: View {
                     Spacer()
 
                     Text(L.howToPlay)
-                        .font(.system(size: 18, weight: .semibold))
+                        .font(.app(size: 18, weight: .semibold))
                         .foregroundColor(DesignSystem.colors.textPrimary)
                         .tracking(0.5)
 
@@ -28,7 +28,8 @@ struct HowToPlayView: View {
                         action: { navigationPath.removeLast() }
                     )
                 }
-                .padding(DesignSystem.spacing.lg)
+                .padding(.horizontal, DesignSystem.spacing.xl)
+                .padding(.vertical, DesignSystem.spacing.lg)
 
                 ScrollView(.vertical, showsIndicators: false) {
                     VStack(spacing: 0) {
@@ -66,7 +67,6 @@ struct HowToPlayView: View {
                 .padding(DesignSystem.spacing.lg)
             }
         }
-        .ignoresSafeArea()
     }
 }
 

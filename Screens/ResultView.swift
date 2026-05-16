@@ -32,7 +32,7 @@ struct ResultView: View {
 
                     VStack(spacing: DesignSystem.spacing.lg) {
                         Text(won ? L.youWin : L.youLose)
-                            .font(.system(size: 48, weight: .thin))
+                            .font(.app(size: 48, weight: .thin))
                             .tracking(2.0)
                             .foregroundColor(
                                 won
@@ -48,11 +48,11 @@ struct ResultView: View {
 
                         VStack(spacing: 6) {
                             Text("スコア \(score)")
-                                .font(.system(size: 20, weight: .light))
+                                .font(.app(size: 20, weight: .light))
                                 .foregroundColor(DesignSystem.colors.textPrimary)
 
                             Text("+\(bonus)")
-                                .font(.system(size: 16, weight: .light))
+                                .font(.app(size: 16, weight: .light))
                                 .foregroundColor(DesignSystem.colors.accentBlue)
                         }
                     }
@@ -79,7 +79,6 @@ struct ResultView: View {
                 .padding(DesignSystem.spacing.lg)
             }
         }
-        .ignoresSafeArea()
     }
 }
 

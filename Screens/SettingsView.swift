@@ -31,13 +31,13 @@ struct SettingsView: View {
                     )
                     Spacer()
                     Text("設定")
-                        .font(.system(size: 16, weight: .semibold))
+                        .font(.app(size: 16, weight: .semibold))
                         .foregroundColor(DesignSystem.colors.textPrimary)
                         .tracking(0.5)
                     Spacer()
                     Color.clear.frame(width: 44, height: 44)
                 }
-                .padding(.horizontal, DesignSystem.spacing.lg)
+                .padding(.horizontal, DesignSystem.spacing.xl)
                 .padding(.vertical, DesignSystem.spacing.md)
                 .opacity(headerOpacity)
                 .offset(y: headerOffset)
@@ -71,10 +71,10 @@ struct SettingsView: View {
                                         .foregroundColor(DesignSystem.colors.accentBlue)
                                     VStack(alignment: .leading, spacing: 3) {
                                         Text("広告非表示を購入済み")
-                                            .font(.system(size: 14, weight: .medium))
+                                            .font(.app(size: 14, weight: .medium))
                                             .foregroundColor(DesignSystem.colors.textPrimary)
                                         Text("広告なしでゲームを楽しめます")
-                                            .font(.system(size: 12, weight: .light))
+                                            .font(.app(size: 12, weight: .light))
                                             .foregroundColor(DesignSystem.colors.textSecondary)
                                     }
                                     Spacer()
@@ -105,10 +105,10 @@ struct SettingsView: View {
                                         }
                                         VStack(alignment: .leading, spacing: 3) {
                                             Text("すべての広告を非表示")
-                                                .font(.system(size: 14, weight: .medium))
+                                                .font(.app(size: 14, weight: .medium))
                                                 .foregroundColor(DesignSystem.colors.textPrimary)
                                             Text("買い切り購入")
-                                                .font(.system(size: 12, weight: .light))
+                                                .font(.app(size: 12, weight: .light))
                                                 .foregroundColor(DesignSystem.colors.textSecondary)
                                         }
                                         Spacer()
@@ -136,7 +136,7 @@ struct SettingsView: View {
                                             .foregroundColor(DesignSystem.colors.textSecondary)
                                             .frame(width: 32, height: 32)
                                         Text("購入を復元")
-                                            .font(.system(size: 14, weight: .light))
+                                            .font(.app(size: 14, weight: .light))
                                             .foregroundColor(DesignSystem.colors.textSecondary)
                                         Spacer()
                                     }
@@ -147,7 +147,7 @@ struct SettingsView: View {
 
                             if let error = purchaseManager.errorMessage {
                                 Text(error)
-                                    .font(.system(size: 12, weight: .light))
+                                    .font(.app(size: 12, weight: .light))
                                     .foregroundColor(.red.opacity(0.8))
                                     .padding(.horizontal, DesignSystem.spacing.md)
                                     .padding(.bottom, DesignSystem.spacing.sm)
@@ -165,10 +165,10 @@ struct SettingsView: View {
                                     .frame(width: 32, height: 32)
                                 VStack(alignment: .leading, spacing: 3) {
                                     Text("アプリの言語")
-                                        .font(.system(size: 14, weight: .medium))
+                                        .font(.app(size: 14, weight: .medium))
                                         .foregroundColor(DesignSystem.colors.textPrimary)
                                     Text("iOSの設定 → NEXUS で変更")
-                                        .font(.system(size: 12, weight: .light))
+                                        .font(.app(size: 12, weight: .light))
                                         .foregroundColor(DesignSystem.colors.textSecondary)
                                 }
                                 Spacer()
@@ -178,7 +178,7 @@ struct SettingsView: View {
                                     }
                                 }) {
                                     Text("開く")
-                                        .font(.system(size: 13, weight: .medium))
+                                        .font(.app(size: 13, weight: .medium))
                                         .foregroundColor(DesignSystem.colors.accentBlue)
                                 }
                             }
@@ -197,19 +197,21 @@ struct SettingsView: View {
                             SectionDivider()
                             SettingsLinkRow(
                                 icon: "hand.raised",
-                                label: "プライバシーポリシー"
+                                label: "プライバシーポリシー",
+                                action: { navigationPath.append(.legal(kind: .privacyPolicy)) }
                             )
                             SectionDivider()
                             SettingsLinkRow(
                                 icon: "doc.text",
-                                label: "利用規約"
+                                label: "利用規約",
+                                action: { navigationPath.append(.legal(kind: .termsOfUse)) }
                             )
                         }
                         .opacity(section4Opacity)
                         .offset(y: section4Opacity == 0 ? sectionsOffset : 0)
 
                         Text("NEXUS © 2025")
-                            .font(.system(size: 11, weight: .light))
+                            .font(.app(size: 11, weight: .light))
                             .foregroundColor(DesignSystem.colors.textSecondary.opacity(0.4))
                             .padding(.top, DesignSystem.spacing.sm)
                             .padding(.bottom, DesignSystem.spacing.xl)
@@ -219,7 +221,6 @@ struct SettingsView: View {
                 }
             }
         }
-        .ignoresSafeArea()
         .onAppear { animateIn() }
     }
 
@@ -262,7 +263,7 @@ private struct SettingsSectionView<Content: View>: View {
     var body: some View {
         VStack(alignment: .leading, spacing: DesignSystem.spacing.sm) {
             Text(title)
-                .font(.system(size: 11, weight: .medium))
+                .font(.app(size: 11, weight: .medium))
                 .foregroundColor(DesignSystem.colors.textSecondary)
                 .tracking(0.8)
                 .padding(.horizontal, 4)
@@ -310,7 +311,7 @@ private struct SettingsToggleRow: View {
                 .frame(width: 32, height: 32)
                 .animation(.easeInOut(duration: 0.2), value: isOn)
             Text(label)
-                .font(.system(size: 14, weight: .light))
+                .font(.app(size: 14, weight: .light))
                 .foregroundColor(DesignSystem.colors.textPrimary)
             Spacer()
             Toggle("", isOn: $isOn)
@@ -334,11 +335,11 @@ private struct SettingsInfoRow: View {
                 .foregroundColor(DesignSystem.colors.textSecondary)
                 .frame(width: 32, height: 32)
             Text(label)
-                .font(.system(size: 14, weight: .light))
+                .font(.app(size: 14, weight: .light))
                 .foregroundColor(DesignSystem.colors.textPrimary)
             Spacer()
             Text(value)
-                .font(.system(size: 14, weight: .light))
+                .font(.app(size: 14, weight: .light))
                 .foregroundColor(DesignSystem.colors.textSecondary)
         }
         .padding(DesignSystem.spacing.md)
@@ -349,16 +350,17 @@ private struct SettingsInfoRow: View {
 private struct SettingsLinkRow: View {
     let icon: String
     let label: String
+    let action: () -> Void
 
     var body: some View {
-        Button(action: {}) {
+        Button(action: action) {
             HStack(spacing: 12) {
                 Image(systemName: icon)
                     .font(.system(size: 16, weight: .light))
                     .foregroundColor(DesignSystem.colors.textSecondary)
                     .frame(width: 32, height: 32)
                 Text(label)
-                    .font(.system(size: 14, weight: .light))
+                    .font(.app(size: 14, weight: .light))
                     .foregroundColor(DesignSystem.colors.textPrimary)
                 Spacer()
                 Image(systemName: "arrow.up.right")

@@ -31,13 +31,13 @@ struct Spacing {
 }
 
 struct Typography {
-    let titleFont: Font = .system(size: 54, weight: .thin, design: .default)
-    let subtitleFont: Font = .system(size: 16, weight: .light, design: .default)
-    let buttonFont: Font = .system(size: 17, weight: .medium, design: .default)
-    let smallFont: Font = .system(size: 12, weight: .light, design: .default)
-    let sectionTitleFont: Font = .system(size: 16, weight: .medium, design: .default)
-    let descriptionFont: Font = .system(size: 14, weight: .light, design: .default)
-    let cardTitleFont: Font = .system(size: 18, weight: .semibold, design: .default)
-    let scoreLargeFont: Font = .system(size: 36, weight: .light, design: .default)
-    let turnLabelFont: Font = .system(size: 12, weight: .light, design: .default)
+    let titleFont: Font = .app(size: 54, weight: .thin)
+    let subtitleFont: Font = .app(size: 16, weight: .light)
+    let buttonFont: Font = .app(size: 17, weight: .medium)
+    let smallFont: Font = .app(size: 12, weight: .light)
+    let sectionTitleFont: Font = .app(size: 16, weight: .medium)
+    let descriptionFont: Font = .app(size: 14, weight: .light)
+    let cardTitleFont: Font = .app(size: 18, weight: .semibold)
+    let scoreLargeFont: Font = .app(size: 36, weight: .light)
+    let turnLabelFont: Font = .app(size: 12, weight: .light)
 }

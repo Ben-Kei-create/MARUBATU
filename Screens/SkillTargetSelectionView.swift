@@ -19,11 +19,12 @@ struct SkillTargetSelectionView: View {
 
                     Spacer()
                 }
-                .padding(DesignSystem.spacing.lg)
+                .padding(.horizontal, DesignSystem.spacing.xl)
+                .padding(.vertical, DesignSystem.spacing.lg)
 
                 VStack(alignment: .leading, spacing: 8) {
                     Text("スキル: \(displaySkillName)")
-                        .font(.system(size: 16, weight: .semibold))
+                        .font(.app(size: 16, weight: .semibold))
                         .foregroundColor(DesignSystem.colors.textPrimary)
                         .tracking(0.3)
 
@@ -33,14 +34,14 @@ struct SkillTargetSelectionView: View {
                             .foregroundColor(DesignSystem.colors.accentBlue)
 
                         Text("\(skillCost)")
-                            .font(.system(size: 14, weight: .medium))
+                            .font(.app(size: 14, weight: .medium))
                             .foregroundColor(DesignSystem.colors.textPrimary)
                     }
                 }
                 .padding(DesignSystem.spacing.lg)
 
                 Text(targetPrompt)
-                    .font(.system(size: 14, weight: .light))
+                    .font(.app(size: 14, weight: .light))
                     .foregroundColor(DesignSystem.colors.textSecondary)
                     .padding(.horizontal, DesignSystem.spacing.lg)
 
@@ -70,7 +71,6 @@ struct SkillTargetSelectionView: View {
                 }
             }
         }
-        .ignoresSafeArea()
     }
 
     private var skillCost: Int {
@@ -142,7 +142,7 @@ struct SkillTargetSelectionView: View {
     private func targetButton(label: String, targetIndex: Int) -> some View {
         Button(action: { selectedTargetIndex = targetIndex }) {
             Text(label)
-                .font(.system(size: 13, weight: .light))
+                .font(.app(size: 13, weight: .light))
                 .foregroundColor(
                     selectedTargetIndex == targetIndex
                         ? .white
@@ -192,7 +192,7 @@ private struct TargetSection<Content: View>: View {
     var body: some View {
         VStack(alignment: .leading, spacing: DesignSystem.spacing.md) {
             Text(title)
-                .font(.system(size: 13, weight: .medium))
+                .font(.app(size: 13, weight: .medium))
                 .foregroundColor(DesignSystem.colors.textSecondary)
                 .tracking(0.3)
                 .padding(.horizontal, DesignSystem.spacing.lg)

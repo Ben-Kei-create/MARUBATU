@@ -15,6 +15,7 @@ enum NavigationDestination: Hashable {
     case result(won: Bool, score: Int, bonus: Int)
     case stats
     case settings
+    case legal(kind: LegalDocumentKind)
 
     func hash(into hasher: inout Hasher) {
         switch self {
@@ -41,6 +42,9 @@ enum NavigationDestination: Hashable {
             hasher.combine("stats")
         case .settings:
             hasher.combine("settings")
+        case .legal(let kind):
+            hasher.combine("legal")
+            hasher.combine(kind)
         }
     }
 
@@ -56,7 +60,13 @@ enum NavigationDestination: Hashable {
             return lw == rw && ls == rs && lb == rb
         case (.stats, .stats): return true
         case (.settings, .settings): return true
+        case (.legal(let lhsKind), .legal(let rhsKind)): return lhsKind == rhsKind
         default: return false
         }
     }
+}
+
+enum LegalDocumentKind: Hashable {
+    case privacyPolicy
+    case termsOfUse
 }

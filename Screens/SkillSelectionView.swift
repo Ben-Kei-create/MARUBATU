@@ -33,14 +33,15 @@ struct SkillSelectionView: View {
                             .font(.system(size: 12, weight: .light))
                             .foregroundColor(DesignSystem.colors.accentBlue)
                         Text("エネルギー \(vm.energy) / 10")
-                            .font(.system(size: 13, weight: .light))
+                            .font(.app(size: 13, weight: .light))
                             .foregroundColor(DesignSystem.colors.textSecondary)
                     }
                 }
-                .padding(DesignSystem.spacing.lg)
+                .padding(.horizontal, DesignSystem.spacing.xl)
+                .padding(.vertical, DesignSystem.spacing.lg)
 
                 Text("スキル選択")
-                    .font(.system(size: 18, weight: .semibold))
+                    .font(.app(size: 18, weight: .semibold))
                     .foregroundColor(DesignSystem.colors.textPrimary)
                     .tracking(0.3)
                     .padding(DesignSystem.spacing.lg)
@@ -58,7 +59,6 @@ struct SkillSelectionView: View {
                     .padding(DesignSystem.spacing.lg)
             }
         }
-        .ignoresSafeArea()
     }
 }
 
@@ -85,17 +85,17 @@ struct SkillRow: View {
 
                 VStack(alignment: .leading, spacing: 4) {
                     Text(skill.displayName)
-                        .font(.system(size: 15, weight: .medium))
+                        .font(.app(size: 15, weight: .medium))
                         .foregroundColor(isAvailable ? DesignSystem.colors.textPrimary : DesignSystem.colors.unavailable)
                     Text(skill.description)
-                        .font(.system(size: 12, weight: .light))
+                        .font(.app(size: 12, weight: .light))
                         .foregroundColor(DesignSystem.colors.textSecondary)
                         .lineLimit(1)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
 
                 Text("\(skill.cost)")
-                    .font(.system(size: 14, weight: .medium))
+                    .font(.app(size: 14, weight: .medium))
                     .foregroundColor(isAvailable ? DesignSystem.colors.accentBlue : DesignSystem.colors.unavailable)
                     .frame(width: 30, alignment: .center)
             }

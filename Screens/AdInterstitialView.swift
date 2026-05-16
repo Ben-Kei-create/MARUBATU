@@ -23,7 +23,7 @@ struct AdInterstitialView: View {
                         }
                     } else {
                         Text("\(countdown)")
-                            .font(.system(size: 14, weight: .medium))
+                            .font(.app(size: 14, weight: .medium))
                             .foregroundColor(.white.opacity(0.6))
                             .frame(width: 36, height: 36)
                             .background(Circle().fill(Color.white.opacity(0.1)))
@@ -69,12 +69,12 @@ struct AdInterstitialView: View {
                                 .foregroundColor(DesignSystem.colors.accentBlue)
 
                             Text("NEXUS")
-                                .font(.system(size: 32, weight: .thin))
+                                .font(.app(size: 32, weight: .thin))
                                 .tracking(3)
                                 .foregroundColor(.white)
 
                             Text("広告を非表示にして\n快適にプレイ")
-                                .font(.system(size: 13, weight: .light))
+                                .font(.app(size: 13, weight: .light))
                                 .foregroundColor(.white.opacity(0.6))
                                 .multilineTextAlignment(.center)
                                 .lineSpacing(4)
@@ -82,7 +82,7 @@ struct AdInterstitialView: View {
                     }
 
                     Text("広告")
-                        .font(.system(size: 11, weight: .light))
+                        .font(.app(size: 11, weight: .light))
                         .foregroundColor(.white.opacity(0.3))
                         .tracking(1)
                 }
@@ -97,7 +97,7 @@ struct AdInterstitialView: View {
                             Image(systemName: "star.fill")
                                 .font(.system(size: 14))
                             Text("広告を非表示")
-                                .font(.system(size: 16, weight: .medium))
+                                .font(.app(size: 16, weight: .medium))
                         }
                         .foregroundColor(.white)
                         .frame(maxWidth: .infinity)
@@ -118,7 +118,7 @@ struct AdInterstitialView: View {
                     if canClose {
                         Button(action: { adManager.dismissAd() }) {
                             Text("続ける")
-                                .font(.system(size: 15, weight: .light))
+                                .font(.app(size: 15, weight: .light))
                                 .foregroundColor(.white.opacity(0.5))
                         }
                     }

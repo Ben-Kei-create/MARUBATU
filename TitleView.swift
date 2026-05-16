@@ -3,6 +3,8 @@ import SwiftUI
 struct TitleView: View {
     @Binding var navigationPath: [NavigationDestination]
 
+    @AppStorage("hasSeenFirstPlayTutorial") private var hasSeenFirstPlayTutorial = false
+
     @State private var logoScale: CGFloat = 0.94
     @State private var logoGlow: Double = 0.5
     @State private var titleOpacity: Double = 0
@@ -26,10 +28,10 @@ struct TitleView: View {
                         iconName: "gearshape.fill",
                         action: { navigationPath.append(.settings) }
                     )
-                    .padding(.trailing, DesignSystem.spacing.lg)
-                    .padding(.top, DesignSystem.spacing.lg)
                     .opacity(gearOpacity)
                 }
+                .padding(.horizontal, DesignSystem.spacing.xl)
+                .padding(.top, DesignSystem.spacing.lg)
 
                 Spacer().frame(minHeight: 80)
 
@@ -95,7 +97,7 @@ struct TitleView: View {
                 VStack(spacing: DesignSystem.spacing.lg) {
                     GradientButton(
                         label: L.play,
-                        action: { navigationPath.append(.modeSelection) }
+                        action: startPlayFlow
                     )
 
                     GlassButton(
@@ -109,7 +111,6 @@ struct TitleView: View {
                 .offset(y: buttonsOffset)
             }
         }
-        .ignoresSafeArea()
         .onAppear {
             // 段階的なフェードイン
             withAnimation(.easeOut(duration: 0.6).delay(0.05)) {
@@ -132,6 +133,15 @@ struct TitleView: View {
             withAnimation(.easeInOut(duration: 2.5).repeatForever(autoreverses: true)) {
                 logoGlow = 1.0
             }
+        }
+    }
+
+    private func startPlayFlow() {
+        if hasSeenFirstPlayTutorial {
+            navigationPath.append(.modeSelection)
+        } else {
+            hasSeenFirstPlayTutorial = true
+            navigationPath.append(.tutorial)
         }
     }
 }

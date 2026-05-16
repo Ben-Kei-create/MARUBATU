@@ -12,12 +12,12 @@ struct ModeCard: View {
             HStack(spacing: DesignSystem.spacing.lg) {
                 VStack(alignment: .leading, spacing: DesignSystem.spacing.sm) {
                     Text(title)
-                        .font(.system(size: 18, weight: .semibold))
+                        .font(.app(size: 18, weight: .semibold))
                         .foregroundColor(DesignSystem.colors.textPrimary)
                         .tracking(0.3)
 
                     Text(subtitle)
-                        .font(.system(size: 14, weight: .light))
+                        .font(.app(size: 14, weight: .light))
                         .foregroundColor(DesignSystem.colors.textSecondary)
                 }
 

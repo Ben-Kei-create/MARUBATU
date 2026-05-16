@@ -15,12 +15,12 @@ struct RuleCard: View {
 
             VStack(alignment: .leading, spacing: 6) {
                 Text(title)
-                    .font(.system(size: 16, weight: .medium))
+                    .font(.app(size: 16, weight: .medium))
                     .foregroundColor(DesignSystem.colors.textPrimary)
                     .tracking(0.3)
 
                 Text(description)
-                    .font(.system(size: 14, weight: .light))
+                    .font(.app(size: 14, weight: .light))
                     .foregroundColor(DesignSystem.colors.textSecondary)
                     .lineSpacing(1.5)
             }

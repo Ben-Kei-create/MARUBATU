@@ -19,6 +19,7 @@ struct ContentView: View {
                     }
             }
             .background(DesignSystem.colors.darkBg.ignoresSafeArea())
+            .font(.app(size: 15))
             .fullScreenCover(isPresented: $adManager.shouldShowAd) {
                 AdInterstitialView()
             }
@@ -61,6 +62,8 @@ struct ContentView: View {
             StatsView(navigationPath: $navigationPath)
         case .settings:
             SettingsView(navigationPath: $navigationPath)
+        case .legal(let kind):
+            LegalDocumentView(navigationPath: $navigationPath, kind: kind)
         }
     }
 }
