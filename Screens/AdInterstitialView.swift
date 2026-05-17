@@ -96,7 +96,7 @@ struct AdInterstitialView: View {
                         HStack(spacing: 8) {
                             Image(systemName: "star.fill")
                                 .font(.system(size: 14))
-                            Text("広告を非表示")
+                            Text("広告を非表示 \(purchaseManager.purchasePrice)")
                                 .font(.app(size: 16, weight: .medium))
                         }
                         .foregroundColor(.white)
@@ -129,6 +129,9 @@ struct AdInterstitialView: View {
         }
         .onAppear {
             startCountdown()
+        }
+        .task {
+            await purchaseManager.refreshProducts()
         }
         .onChange(of: purchaseManager.isAdFree) { _, adFree in
             if adFree { adManager.dismissAd() }

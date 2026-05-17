@@ -12,18 +12,18 @@ struct GlassButton: View {
                 .font(DesignSystem.typography.buttonFont)
                 .tracking(0.5)
                 .foregroundColor(textColor)
-                .frame(maxWidth: .infinity)
-                .frame(height: 56)
+                .frame(maxWidth: 286)
+                .frame(height: 52)
                 .background(
-                    RoundedRectangle(cornerRadius: 14)
+                    RoundedRectangle(cornerRadius: 13)
                         .fill(.ultraThinMaterial)
                         .overlay(
-                            RoundedRectangle(cornerRadius: 14)
+                            RoundedRectangle(cornerRadius: 13)
                                 .fill(DesignSystem.colors.glass)
                         )
                 )
                 .overlay(
-                    RoundedRectangle(cornerRadius: 14)
+                    RoundedRectangle(cornerRadius: 13)
                         .stroke(textColor.opacity(0.4), lineWidth: 1.0)
                 )
                 .scaleEffect(isPressed ? 0.96 : 1.0)

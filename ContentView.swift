@@ -62,6 +62,8 @@ struct ContentView: View {
             StatsView(navigationPath: $navigationPath)
         case .settings:
             SettingsView(navigationPath: $navigationPath)
+        case .store:
+            StoreView(navigationPath: $navigationPath)
         case .legal(let kind):
             LegalDocumentView(navigationPath: $navigationPath, kind: kind)
         }

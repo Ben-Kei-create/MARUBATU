@@ -5,34 +5,27 @@ struct EnergyBar: View {
     let max: Int
 
     var body: some View {
-        HStack(spacing: DesignSystem.spacing.md) {
-            HStack(spacing: 0) {
-                ForEach(0..<max, id: \.self) { index in
-                    RoundedRectangle(cornerRadius: 2)
-                        .fill(
-                            index < current
-                                ? DesignSystem.colors.accentBlue
-                                : DesignSystem.colors.textSecondary.opacity(0.2)
-                        )
-                        .frame(height: 8)
-                        .shadow(
-                            color: index < current
-                                ? DesignSystem.colors.accentBlue.opacity(0.6)
-                                : .clear,
-                            radius: 4
-                        )
+        HStack(spacing: 0) {
+            ForEach(0..<max, id: \.self) { index in
+                RoundedRectangle(cornerRadius: 2)
+                    .fill(
+                        index < current
+                            ? DesignSystem.colors.accentBlue
+                            : DesignSystem.colors.textSecondary.opacity(0.2)
+                    )
+                    .frame(height: 7)
+                    .shadow(
+                        color: index < current
+                            ? DesignSystem.colors.accentBlue.opacity(0.6)
+                            : .clear,
+                        radius: 4
+                    )
 
-                    if index < max - 1 {
-                        Spacer()
-                            .frame(width: 2)
-                    }
+                if index < max - 1 {
+                    Spacer()
+                        .frame(width: 2)
                 }
             }
-
-            Text("\(current) / \(max)")
-                .font(.app(size: 13, weight: .light))
-                .foregroundColor(DesignSystem.colors.textSecondary)
-                .frame(width: 50, alignment: .trailing)
         }
     }
 }

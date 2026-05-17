@@ -11,8 +11,8 @@ struct GradientButton: View {
                 .font(DesignSystem.typography.buttonFont)
                 .tracking(0.5)
                 .foregroundColor(.white)
-                .frame(maxWidth: .infinity)
-                .frame(height: 56)
+                .frame(maxWidth: 286)
+                .frame(height: 52)
                 .background(
                     LinearGradient(
                         gradient: Gradient(colors: [
@@ -23,9 +23,9 @@ struct GradientButton: View {
                         endPoint: .bottomTrailing
                     )
                 )
-                .cornerRadius(14)
+                .cornerRadius(13)
                 .overlay(
-                    RoundedRectangle(cornerRadius: 14)
+                    RoundedRectangle(cornerRadius: 13)
                         .stroke(
                             LinearGradient(
                                 gradient: Gradient(colors: [

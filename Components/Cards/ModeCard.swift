@@ -9,10 +9,10 @@ struct ModeCard: View {
 
     var body: some View {
         Button(action: action) {
-            HStack(spacing: DesignSystem.spacing.lg) {
+            HStack(spacing: DesignSystem.spacing.md) {
                 VStack(alignment: .leading, spacing: DesignSystem.spacing.sm) {
                     Text(title)
-                        .font(.app(size: 18, weight: .semibold))
+                        .font(.app(size: 17, weight: .medium))
                         .foregroundColor(DesignSystem.colors.textPrimary)
                         .tracking(0.3)
 
@@ -23,13 +23,13 @@ struct ModeCard: View {
 
                 Spacer()
 
-                VStack(spacing: 12) {
+                VStack(spacing: 10) {
                     Circle()
                         .stroke(DesignSystem.colors.accentBlue, lineWidth: 2)
-                        .frame(width: 64, height: 64)
+                        .frame(width: 54, height: 54)
                         .overlay(
                             Image(systemName: icon)
-                                .font(.system(size: 28, weight: .light))
+                                .font(.system(size: 23, weight: .light))
                                 .foregroundColor(DesignSystem.colors.accentBlue)
                         )
 
@@ -38,18 +38,19 @@ struct ModeCard: View {
                         .foregroundColor(DesignSystem.colors.accentBlue)
                 }
             }
-            .padding(DesignSystem.spacing.lg)
-            .frame(height: 128)
+            .padding(.horizontal, 18)
+            .padding(.vertical, 16)
+            .frame(height: 112)
             .background(
-                RoundedRectangle(cornerRadius: 20)
+                RoundedRectangle(cornerRadius: 16)
                     .fill(.ultraThinMaterial)
                     .overlay(
-                        RoundedRectangle(cornerRadius: 20)
+                        RoundedRectangle(cornerRadius: 16)
                             .fill(DesignSystem.colors.glass)
                     )
             )
             .overlay(
-                RoundedRectangle(cornerRadius: 20)
+                RoundedRectangle(cornerRadius: 16)
                     .stroke(
                         DesignSystem.colors.accentBlue.opacity(isPressed ? 0.8 : 0.4),
                         lineWidth: 1.5

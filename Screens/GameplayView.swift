@@ -87,8 +87,8 @@ struct GameplayView: View {
 
                 Spacer(minLength: DesignSystem.spacing.xs)
 
-                VStack(alignment: .leading, spacing: 12) {
-                    HStack {
+                VStack(alignment: .leading, spacing: 10) {
+                    HStack(spacing: 8) {
                         Image(systemName: "bolt.fill")
                             .font(.system(size: 14, weight: .light))
                             .foregroundColor(DesignSystem.colors.accentBlue)
@@ -99,6 +99,11 @@ struct GameplayView: View {
                             .tracking(0.5)
 
                         Spacer()
+
+                        Text("\(vm.energy) / 10")
+                            .font(.app(size: 12, weight: .medium))
+                            .foregroundColor(DesignSystem.colors.textPrimary.opacity(0.72))
+                            .monospacedDigit()
                     }
 
                     EnergyBar(current: vm.energy, max: 10)
@@ -112,17 +117,19 @@ struct GameplayView: View {
                         onSelect: selectSkill
                     )
                 }
-                .padding(DesignSystem.spacing.md)
+                .frame(width: 292)
+                .padding(.horizontal, 14)
+                .padding(.vertical, 13)
                 .background(
-                    RoundedRectangle(cornerRadius: 18)
-                        .fill(DesignSystem.colors.darkBgSecondary.opacity(0.82))
+                    RoundedRectangle(cornerRadius: 15)
+                        .fill(DesignSystem.colors.darkBgSecondary.opacity(0.74))
                         .overlay(
-                            RoundedRectangle(cornerRadius: 18)
+                            RoundedRectangle(cornerRadius: 15)
                                 .fill(
                                     LinearGradient(
                                         colors: [
-                                            DesignSystem.colors.accentBlue.opacity(0.12),
-                                            DesignSystem.colors.glass.opacity(0.72),
+                                            DesignSystem.colors.accentBlue.opacity(0.1),
+                                            DesignSystem.colors.glass.opacity(0.54),
                                             DesignSystem.colors.accentPurple.opacity(0.08)
                                         ],
                                         startPoint: .topLeading,
@@ -131,11 +138,11 @@ struct GameplayView: View {
                                 )
                         )
                         .overlay(
-                            RoundedRectangle(cornerRadius: 18)
+                            RoundedRectangle(cornerRadius: 15)
                                 .stroke(
                                     LinearGradient(
                                         colors: [
-                                            DesignSystem.colors.accentBlue.opacity(0.42),
+                                            DesignSystem.colors.accentBlue.opacity(0.34),
                                             DesignSystem.colors.textSecondary.opacity(0.16),
                                             DesignSystem.colors.accentPurple.opacity(0.26)
                                         ],
@@ -145,9 +152,9 @@ struct GameplayView: View {
                                     lineWidth: 1
                                 )
                         )
-                        .shadow(color: DesignSystem.colors.accentBlue.opacity(0.16), radius: 22, y: 10)
+                        .shadow(color: DesignSystem.colors.accentBlue.opacity(0.15), radius: 20, y: 8)
                 )
-                .padding(.horizontal, DesignSystem.spacing.lg)
+                .frame(maxWidth: .infinity)
                 .padding(.top, DesignSystem.spacing.sm)
                 .padding(.bottom, DesignSystem.spacing.md)
             }
@@ -271,7 +278,7 @@ private struct SkillDockView: View {
     }
 
     var body: some View {
-        HStack(spacing: 12) {
+        HStack(spacing: 10) {
             ForEach(dockSkills) { skill in
                 FooterSkillButton(
                     icon: iconName(for: skill),
@@ -285,6 +292,7 @@ private struct SkillDockView: View {
 
             LockedSkillSlot()
         }
+        .frame(maxWidth: .infinity, alignment: .center)
     }
 
     private func iconName(for skill: SkillData) -> String {
@@ -367,11 +375,10 @@ private struct FooterSkillButton: View {
                         .shadow(color: accent.opacity(isAvailable ? 0.42 : 0), radius: 10)
                 }
             }
-            .frame(height: 58)
+            .frame(width: 78, height: 54)
             .scaleEffect(isPressed ? 0.97 : 1)
             .opacity(isAvailable || cost == nil ? 1 : 0.56)
         }
-        .frame(maxWidth: .infinity)
         .buttonStyle(PlainButtonStyle())
         .accessibilityLabel(label)
         .onLongPressGesture(minimumDuration: 0.01, perform: {}) { pressed in
@@ -405,8 +412,7 @@ private struct LockedSkillSlot: View {
                     .foregroundColor(DesignSystem.colors.textSecondary.opacity(0.44))
             }
         }
-        .frame(height: 58)
-        .frame(maxWidth: .infinity)
+        .frame(width: 78, height: 54)
         .accessibilityHidden(true)
     }
 }

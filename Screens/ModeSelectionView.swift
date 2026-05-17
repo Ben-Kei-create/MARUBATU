@@ -54,7 +54,8 @@ struct ModeSelectionView: View {
                             }
                         )
                     }
-                    .padding(.horizontal, DesignSystem.spacing.lg)
+                    .frame(maxWidth: 322)
+                    .frame(maxWidth: .infinity)
                     .padding(.top, DesignSystem.spacing.xl)
                     .padding(.bottom, DesignSystem.spacing.xxl)
                 }

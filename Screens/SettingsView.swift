@@ -82,7 +82,7 @@ struct SettingsView: View {
                                 .padding(DesignSystem.spacing.md)
                             } else {
                                 Button(action: {
-                                    Task { await purchaseManager.purchase() }
+                                    navigationPath.append(.store)
                                 }) {
                                     HStack(spacing: 12) {
                                         ZStack {
@@ -104,26 +104,20 @@ struct SettingsView: View {
                                                 .foregroundColor(DesignSystem.colors.accentBlue)
                                         }
                                         VStack(alignment: .leading, spacing: 3) {
-                                            Text("すべての広告を非表示")
+                                            Text(purchaseManager.purchaseTitle)
                                                 .font(.app(size: 14, weight: .medium))
                                                 .foregroundColor(DesignSystem.colors.textPrimary)
-                                            Text("買い切り購入")
+                                            Text("買い切り購入 \(purchaseManager.purchasePrice)")
                                                 .font(.app(size: 12, weight: .light))
                                                 .foregroundColor(DesignSystem.colors.textSecondary)
                                         }
                                         Spacer()
-                                        if purchaseManager.isLoading {
-                                            ProgressView()
-                                                .tint(DesignSystem.colors.accentBlue)
-                                        } else {
-                                            Image(systemName: "chevron.right")
-                                                .font(.system(size: 13, weight: .light))
-                                                .foregroundColor(DesignSystem.colors.textSecondary)
-                                        }
+                                        Image(systemName: "chevron.right")
+                                            .font(.system(size: 13, weight: .light))
+                                            .foregroundColor(DesignSystem.colors.textSecondary)
                                     }
                                     .padding(DesignSystem.spacing.md)
                                 }
-                                .disabled(purchaseManager.isLoading)
 
                                 SectionDivider()
 
@@ -222,6 +216,10 @@ struct SettingsView: View {
             }
         }
         .onAppear { animateIn() }
+        .task {
+            await purchaseManager.refreshProducts()
+            await purchaseManager.refreshPurchasedProducts()
+        }
     }
 
     private func animateIn() {
